@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="demo"></p>
+
+    <script>
+      const notasFin = prompt("ingrese notas");
+      function nota(notasFin) {
+        if (notasFin >= 0 && notasFin <= 3) {
+          alert("Muy deficiente");
+        } else if (notasFin >= 3 && notasFin <= 5) {
+          alert("Insuficiente");
+        } else if (notasFin >= 5 && notasFin <= 6) {
+          alert("Suficiente");
+        } else if (notasFin >= 6 && notasFin <= 7) {
+          alert("Bien");
+        } else if (notasFin >= 7 && notasFin <= 9) {
+          alert("Notable");
+        } else if (notasFin >= 9 && notasFin <= 10) {
+          alert("Sobresaliente");
+        } else {
+          alert("Nota inválida");
+        }
+      }
+      document.write(nota(notasFin));
+    </script>
+  </body>
+</html>
