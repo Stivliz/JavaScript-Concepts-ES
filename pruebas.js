@@ -516,7 +516,7 @@ datos.forEach((element, index, datos) => {
 */
 
 
-
+/*
 const any = [
 
     { nombre: 'Ana', edad: 20 },
@@ -538,3 +538,49 @@ console.log(xo3);
 
 const x5 = any.filter((element) => { return element.edad <= 30;});
 console.log(x5);
+*/
+
+/*
+const user = {
+    a: true,
+    b: true,
+    c:true
+}
+
+/*
+for(let it in user){
+    console.log(it[user])
+}
+
+
+for(let it in user){
+    console.log(user[it])
+}
+*/
+/*
+for(let it in user){
+    console.log(user[it] = false)
+}
+*/
+/*
+const user2 = {
+    
+    usr:[
+        {lista:false},
+        {lista:false},
+        {lista:false},
+        {lista:false},
+        {lista:false}
+    ]
+}
+
+console.log(user2.usr[lista])
+
+*/
+
+
+
+
+
+
+
