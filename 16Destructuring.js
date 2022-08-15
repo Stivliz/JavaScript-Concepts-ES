@@ -1,6 +1,6 @@
 //*DESTRUCTURACION(Destructuring)
 /*
-El destructuring es una técnica que se aplica sobre Arrays y sobre Objetos para asignar
+El destructuring es una técnica que se aplica sobre Arrays y Objetos para acceder y asignar
 cada una de las propiedades de este tipo de datos a una variable. Se extraen los valores
 de los objetos y arreglos y se asignan a variables.
 
@@ -85,8 +85,8 @@ ________________________________________________________________________________
 //*DESTRUCTURIGN CON OBJETOS.
 /*
 Ahora para aplicar el destructuring , haríamos algo bastante similar como lo hacíamos con los arreglos, 
-la diferencia esta en que con los Arrays utilizábamos los corchetes y ahora con los objetos utilizamos las llave.
-Acontinuacion veremos un ejemplo en donde accedemos a las propiedades del objeto.
+la diferencia esta en que con los Arrays utilizábamos los corchetes y ahora con los objetos utilizamos las llaves para acceder a ellos.
+A continuacion veremos un ejemplo en donde accedemos a las propiedades del objeto.
 
 */
 
@@ -145,12 +145,12 @@ const dato = {
     apellido: 'Diaz',
     edad: 23
 }
+//Sin renombrar 
 const {nombree, apellido, edad} = dato;
 console.log(nombree, apellido, edad);
 
 
 //Ahora renombraremos el nombre de la variable de la propiedad:
-
 const {nombree: nombreePer, apellido: apellidoPer, edad: edadPer} = dato; //Aca le damos el nuevo nombre a la variable de la propiedad.
 console.log(nombreePer, apellidoPer, edadPer);
 
@@ -161,39 +161,6 @@ igual pasara con los demas nombres de las variables de las propiedad del objeto.
 
 
 _________________________________________________________________________________________________________
-
-
-//*FORMATO SPREAD OBJETOS
-/*
-También hay que resaltar que en los Arrays teníamos una forma de saltarnos elementos, aquí en los objetos no 
-tiene sentido saltarse elementos porque no van por orden, por lo de comas huerfanas como signo de que esa
-posicion o valor no sera tomado, no se puedra aplicar, porque aqui en los objetos  no se pueden saltar 
-las propiedades.
-
-Ahora bien, el formato SPREAD(...) que me permite coger el resto de valores o propiedades de un objeto y meterlo 
-en un nuevo, si se mantiene, por ejemplo si me interesa tener solo el nombre, pero el apellido 
-y la edad no y me interesa meterlo en un subobjeto entonces lo que haremos será usar el operador SPREAD:
-
-*/
-
-
-const getObject = {
-    nombre2: 'juan',
-    apellido2: 'Diaz',
-    edad2: 23,
-    casado2: false
-}
-const {nombre2, ...restogetObject} = getObject; //Aca mandamos a llamar intencionalmente a la variable de la propiedad
-console.log(nombre2, restogetObject);           //nombre y usamos el operador SPREAD para coger el resto de las propiedades  
-                                                //del objeto diferentes a la variable de la propiedad nombre.
-
-/*Lo que hara lo anterior es que saldra en consola juan, y el resto del objeto estara dentro de un obejeto
-por lo cual en el subobjeto se anidará las propiedades de apellido2, edad2 y casado2. Y quedaria asi al ejecutarlo 
-en la temrinal:
-
---> juan {apellido2: "Diaz", edad2: 23, casado2: false}
-
-*/
 
 //*DESTRUCTURING SOBRE OBJETOS Y SUBOBJETOS.
 
@@ -216,23 +183,24 @@ console.log(nombre, direccion); //En la consola aparecerá que nombre es un Stri
 /*
 Para finalizar el destructuring sobre objetos vamos a ver un caso particular, imaginémonos que en el objeto 
 persona tenemos otro objeto en el interior (subobjeto) llamado por ejemplo dirección que tiene dos propiedades 
-llamadas calle y Código.
+llamadas calle y Código. */
 
-const persona = {
+const person = {
     nombre: 'juan',
     apellido: 'Diaz',
     edad: 23,
-    dirección: {        <-- Subobjeto: Adentro e este subobjeto estan las propiedades calle y codigo.
-      calle: calle 35,
+    dirección: {      //  <-- Subobjeto: Adentro e este subobjeto estan las propiedades calle y codigo.
+      calle: calle-35,
       código: 09092013
     }
 };
 
 
-Ahora queremos acceder a la propiedad (nombre), que esta en el objeto (persona), y tambien queremos acceder
+/*Ahora queremos acceder a la propiedad (nombre), que esta en el objeto (person), y tambien queremos acceder
 al subobjeto (dirección), para esto hacemos el destructuring de nombre y dirección:
+*/
 
-const {nombre, dirección} = persona;-->Aca le decimos que queremos acceder a la variable de la propiedad nombre 
+const {nombre, dirección} = persona; /*-->Aca le decimos que queremos acceder a la variable de la propiedad nombre 
 console.log(nombre, dirección);       y a la variable de la propiedad direccion que internamente tiene un subobjeto,
                                       lamada calle y codigo. 
 
@@ -280,7 +248,7 @@ hacíamos un renombre de una variable lo que hacemos es poner la variable: y el 
 
 
 En primer lugar lo que haremos sera poner el nombre de la variable de la propiedad que es un subjeto en este caso
-(direccion), y despues lo iugalamos con dos puntos y abrimos llaves y de esa manera podemos destructurar a las
+(direccion), y despues lo igualamos con dos puntos y abrimos llaves y de esa manera podemos destructurar a las
 variables de las propiedades internas del subobjeto, en este caso seria calle y cogido.
 De esta manera utilizamos el destructuring de un subobjeto en una sola linea y despues lo imprimimos
 con el nombre de las variables de las propiedades del subobjeto. 
@@ -289,7 +257,7 @@ con el nombre de las variables de las propiedades del subobjeto.
 
 const persona = {
 
-    nombre: 'juan',
+    nombrex: 'juan',
     apellido: 'Rodriguez',
     edad:23,
     direccion:{
@@ -298,5 +266,111 @@ const persona = {
     }
 };
 
-const {nombre, direccion:{calle, codigo}} = persona; //Destructuring en una sola linea.
+const {nombrex, direccion:{calle, codigo}} = persona; //Destructuring en una sola linea.
 console.log(nombre, calle, codigo);
+
+
+
+//! OtRO EJEMPLO MAS COMPLEJO:
+/* En este ejmplo, utilizaremos el destructurign para acceder a varios sub-objetos o objetos aninados que estan dentro uno detras de otros,
+por ejemplo, tenemos al objeto llamado "CONCEPTOS" que a su vez tiene un objeto anidado o sub-objeto llamado "dato", este sub-objeto tiene a su vez
+otro Sub-Objeto aninado llamado "Dato2", este a su vez tiene otro Sub-Objeto llamado "Dato3", y este Su-Objeto tiene tambien a su vez otro
+Sub-Objeto llamado "Dato4", para acceder a "Dato4" y a su llave llamada informacion tendremos que hacer lo siguiente:
+
+Primero creamos la estructura del destructuring, y lo inicializamos con el nombre del objeto llamado "Conceptos" la estructura quedaria asi:
+
+const {} = conceptos;
+
+Ahora lo que haremos para acceder a la propiedad informacion del ultimo Sub-Objeto o Objeto aninado sera primero escribir entre la estructura
+del destruturing el primer Sub-Objeto llamado (DATO) despues igualarlo con dos puntos (:), seguido de eso abrir las llaves en donde escribiremos
+el nombre del segundo Sub-Objeto llamado (DATO2) igualarlo una vez mas con dos puntos, despues volvemos a abrir las llaves para una vez mas 
+escribir el nombre del tercer Sub-Objeto llamado DATO3, a su vez volveremos a igualarlo con dos puntos, una vez mas abriremos las llaves para 
+poner el nombre del ultimo Sub-Objeto llamado (DATO4), lo igualamos con los dos puntos abriremos las llaves y por ultimo pondremos el nombre 
+de la llave informacion.
+
+De esta manera podremos utilizar el destructuring y acceder a la propiedad del ultimo Sub-Objeto, y simplemente con llamar a la llave informacion
+podremos acceder de igual forma a su valor.
+
+const{dato:{dato2: {dato3: {dato4: {informacion}}}}} = objetos;
+console.log(informacion);
+
+Dado el caso si queremos mostrar no solo el valor de las llaves de un Sub-Objeto, si no a su vez tambien el Sub-Objeto completo lo que haremos 
+sera que simplemente llamaremos al Sub-Objeto primero de forma independiente para despues separarlo con una coma y poder seguir accediedo
+a los Sub-Objetos de la forma que ya habiamos explicado, por ende, esto se realizara de la siguiente forma. Como ejemplo accederemos no
+solo a la llave del ultimo Sub-Objeto llamado DATO4 sino tambien al Sub-Onjeto en cuestion. Y de igual forma los demas Sub-Objetos anteriores
+a este, esto quedaria de la siguiente manera:
+
+const{dato:{dato2, dato2: {dato3, dato3: {dato4, dato4: {informacion}}}}} = objetos;
+console.log(dato2, dato3, dato4, informacion);
+
+Con esta forma, podemos acceder al el Sub-Objeto completo de dato2, dato3 y dato4 y asu vez a la llave que esta contenida
+en el Sub-Objeto llamado DATO4.
+
+
+*/
+
+const conceptos = {
+    name1: 'josue',
+    apellido: 'guzman',
+    años: 20,
+    dato: {
+      nombre2: 'juan',
+      apellido2: 'tovar',
+      años: 20,
+      dato2:{
+        nomre3:'pablo',
+        apellido3:'duran',
+        arreglo: [1,2,3,[3,4['joseph']]],
+        años: 22, 
+        dato3: {
+          nombre4:'danna',
+          apellido4: 'giraldo',
+          años: 21,
+          dato4: {
+            informacion: false
+          }
+        }
+      },
+      fabricacion:{
+        pais: 'china'
+      }
+    }
+  }
+  
+  const{dato:{dato2: {dato3: {dato4: informacion}}}} = objetos;
+  console.log( años);
+
+____________________________________________________________________________________________________________
+
+
+//*FORMATO SPREAD OBJETOS
+/*
+También hay que resaltar que en los Arrays teníamos una forma de saltarnos elementos, aquí en los objetos no 
+tiene sentido saltarse elementos porque no van por orden, por lo de comas huerfanas como signo de que esa
+posicion o valor no sera tomado, no se puedra aplicar, porque aqui en los objetos  no se pueden saltar 
+las propiedades.
+
+Ahora bien, el formato SPREAD(...) que me permite coger el resto de valores o propiedades de un objeto y meterlo 
+en un nuevo, si se mantiene, por ejemplo si me interesa tener solo el nombre, pero el apellido 
+y la edad no y me interesa meterlo en un subobjeto entonces lo que haremos será usar el operador SPREAD:
+
+*/
+
+
+const getObject = {
+    nombre2: 'juan',
+    apellido2: 'Diaz',
+    edad2: 23,
+    casado2: false
+}
+const {nombre2, ...restogetObject} = getObject; //Aca mandamos a llamar intencionalmente a la variable de la propiedad
+console.log(nombre2, restogetObject);           //nombre y usamos el operador SPREAD para coger el resto de las propiedades  
+                                                //del objeto diferentes a la variable de la propiedad nombre.
+
+/*Lo que hara lo anterior es que saldra en consola juan, y el resto del objeto estara dentro de un obejeto
+por lo cual en el subobjeto se anidará las propiedades de apellido2, edad2 y casado2. Y quedaria asi al ejecutarlo 
+en la temrinal:
+
+--> juan {apellido2: "Diaz", edad2: 23, casado2: false}
+
+*/
