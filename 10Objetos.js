@@ -55,7 +55,7 @@ const dato ={
     estudios: 'Economia',
     hijos: false,
     datos: [2019, 2020, 2021, 2022],
-    saludar:((nombre, apellido  ) =>{  //Este objeto tiene una arrow function dentro de el. Para acceder a la arrow function haremos:
+    saludar:((nombre, apellido  ) => {  //Este objeto tiene una arrow function dentro de el. Para acceder a la arrow function haremos:
         console.log(`Hola soy ${nombre} ${apellido}`); //llamaremos primero al objeto global (objeto), luego el punto y el nombre de la funcion, 
                                                        //y al final los parentesis con el punto y coma (;).
     })                                                 //En este caso nuestra arrow function tiene dos parametros, nombre y apellido.
@@ -77,7 +77,7 @@ console.log(dato. nombre);
 --> primero se escribe el console log despues entre parentesis se escribe el nombre del objeto,
 seguido del punto que servira como medio para llamar al atributo o propiedad que queremos.*/
 
-const objetoss = {
+const objetos = {
     name1: 'josue',
     apellido: 'guzman',
     años: 20,
@@ -214,7 +214,7 @@ DESTRUCTURING ademas de extraer el valor, crea la variable.*/
 
 //!ALGUNAS PROPIEDADES DE LOS OBJETOS QUE NOS AYUDAN A TRABAJAR CON ELLOS:
 
-const objetos = {
+const objetoss = {
     nombre: 'Ana',
     apellido: 'Gabriela',
     ocupacion: 'Mantenida',
@@ -229,10 +229,27 @@ const objetos = {
     }                                                           //* tal parece que "no estoy seguro" (El metodo this no funciona con las arrow functions si no con las funciones declaradas)
 }
 
-console.log(Object.values(objetos)); //Me da los valores de las llaves del objeto.
-console.log(Object.keys(objetos)); // Me da las llaves de el objeto, es decir, los nombres de las propiedades y metodos.
-console.log(Object.entries(objetos)); //Me da las llaves y los valores de el objeto.
-console.log(Object.getOwnPropertyNames(objetos)); //Me da las llaves de el objeto, es decir, los nombres de las propiedades y metodos.
-console.log(Object.getOwnPropertyDescriptor(objetos, 'nombre')); //Me da la llave del atributo nombre y su description.
-console.log(Object.getOwnPropertyDescriptors(objetos)); //Me da las llaves de el objeto y la description de los atriutos y metodos.
-console.log(objetos.hasOwnProperty('nombre')); //Esta propiedad busca y me permite saber si el objeto tiene la propiedad nombre por ejemplo.
+console.log(Object.values(objetoss)); //Me da los valores de las llaves del objeto.
+console.log(Object.keys(objetoss)); // Me da las llaves de el objeto, es decir, los nombres de las propiedades y metodos.
+console.log(Object.entries(objetoss)); //Me da las llaves y los valores de el objeto.
+console.log(Object.getOwnPropertyNames(objetoss)); //Me da las llaves de el objeto, es decir, los nombres de las propiedades y metodos.
+console.log(Object.getOwnPropertyDescriptor(objetoss, 'nombre')); //Me da la llave del atributo nombre y su description.
+console.log(Object.getOwnPropertyDescriptors(objetoss)); //Me da las llaves de el objeto y la description de los atriutos y metodos.
+console.log(objetoss.hasOwnProperty('nombre')); //Esta propiedad busca y me permite saber si el objeto tiene la propiedad nombre por ejemplo.
+
+//! METODO PARA CONGELAR UN OBJETO Y NO PODERLO MODIFICAR:
+/*
+Si recordamos en una variable declarada con CONST una vez que es definida no puede reasignarse su valor, sin embargo los
+objetos si se pueden reasignar sus llaves, eso pasa por que aunque una variable estel este declarada con CONST, al estar en un
+objeto sus propiedades si se pueden reescribir o eliminar.
+
+Entonces esto se puede prevenir utilizando un metodo prevenir que se pueda modificar y que se comporte como una constante, es decir
+que no pueda ser modificado. Para esto habilitaremos lo que se conoce como MODO ESTRICTO, esto basicamente lo que hace es evaluar el codigo de forma
+escrita, es decir no permitas malas practicas en el documento. Hbailitar el modo estricto nos obligara a cumplir ciertas reglas al momento
+de escribir el codigo de JAVASCRIPT. 
+
+Para activar el modo estricto solo ponemos al inicio "use strict"; y de esta manera se activara 
+
+
+
+*/
