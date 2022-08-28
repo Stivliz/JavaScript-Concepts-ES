@@ -1,26 +1,48 @@
 //*LOS OBJETOS:
-/* 
 
+
+//! 1. ¿QUE SON LOS OBJETOS?
+/* 
 Los objetos en JavaScript, como en tantos otros lenguajes de programación, se pueden comparar
 con objetos de la vida real. El concepto de Objetos en JavaScript se puede entender con objetos 
 tangibles de la vida real
-
-Un Objeto en JAVASCRIPT es una colección de datos relacionados, dentro de un objeto 
-las variables llevan el nombre de propiedades o llaves(keys) y las funciones se llaman métodos.
 
 En los objetos podemos utilizar constantes para definir objetos, es adecuado utilizar
 const cuando estamos trabajando con objetos porque así evitamos que un nuevo objeto ocupe o 
 cambie la referencia que en memoria tiene mi objeto.
 
-Las variables en los objetos son conocidos como tributos, propiedades o llaves(Keys).
-En los objetos las funciones son métodos.
-Los métodos se igualan a las funciones con doble punto (:),
-así como se iguala el valor de las propiedades o tambien conocidas llaves(Keys).
+Un Objeto en JAVASCRIPT es una colección de datos relacionados, dentro del objeto es donde declararemos sus
+propiedadades tambien conocidos como tributos o laves(keys), y las funciones que en los objetos son conocidas
+como métodos.
+
+El formato para declarar propiedades y metodos en un objeto es sencillo, simplemente le damos nombre 
+a esa propiedad que es un variable que esta dentro de un objeto, en vez de utilizar el operador de igual para inicializar el valor de
+la propiedad, utilizamos el operado de dos puntos(:), de esta manera le asignamos valores a las propiedades. Cada vez que a cada propiedad
+le asignemos un valor, debemos separalas por comas, para diferenciar cada una de ellas. De esta forma tambien 
+podemos asignarle valores a los metodos, con la diferencia de que estos contaran con su estructura correspondiente. 
+
+La estructura de un objeto es la siguiente:
+
+const objeto = {
+    propiedad1: valor1,
+    propiedad2: valor2,
+    propiedad3: valor3,
+    metodo1: function(){
+        //codigo
+    },
+  };
+
+En los objetos podemos declarar propiedades con disintios tipos de datos, los tipos de datos que puede contener 
+los atributos de un objeto pueden ser strings, numbers, booleanos, null, arrays, objetos anidados, funciones etc. En los obejtos
+podremos almacenar todos los tipos de datos que existan en JavaScript.
 
 Al momento de agregar mas propiedades o llaves debemos separar estas poniendo una coma (,)
 para hacer la separacion entre una llave y otra.
+
+Tambien hay que resaltar que tenemos tanto Objetos literales, que son los usualmente conocidos y tambien Objetos Constructores.
 */
-// Este tipo de objetos son llamados OBJETOS LITERALES.
+
+//! 1.1. OBJETOS LITERALES:
 const persona = {
     Nombre: 'Juan',
     Apellido: 'Ramirez',
@@ -44,38 +66,27 @@ const persona = {
                       // y al final los parentesis con el punto y coma (;). 
              
                       
-//!OBJETO CON UNA ARROW FUNCTION DENTRO DE EL.
+_______________________________________________________________________________________________________________________
 
-const dato ={
-    nombre: 'Ana',
-    apellido: 'Gabriela',
-    ocupacion: 'Mantenida',
-    relacion: 'Divorciada',
-    edad: '20',
-    estudios: 'Economia',
-    hijos: false,
-    datos: [2019, 2020, 2021, 2022],
-    saludar:((nombre, apellido  ) => {  //Este objeto tiene una arrow function dentro de el. Para acceder a la arrow function haremos:
-        console.log(`Hola soy ${nombre} ${apellido}`); //llamaremos primero al objeto global (objeto), luego el punto y el nombre de la funcion, 
-                                                       //y al final los parentesis con el punto y coma (;).
-    })                                                 //En este caso nuestra arrow function tiene dos parametros, nombre y apellido.
-                                                       //por lo cual seria asi la invocacion de la arrow function, Ejemplo:
-}                                                      //objeto.saludar('Ana', 'Gabriela');
-
-objeto.saludar('Ana', 'Gabriela'); //Invocacion de la arrow function.
-console.log(objeto.nombre, objeto.apellido, objeto.relacion, objeto.datos[3]);
+//! 2. FORMAS PARA ACCEDER A LOS METODOS Y PROPIEDADES DE LOS OBJETOS.
 
 
-//!FORMAS PARA ACCEDER A LOS METODOS Y PROPIEDADES DE LOS OBJETOS.
-
+//! 2.1 Accediendo a variables de objetos aninados y arreglos:
 /*
-1. Accediendo a variables de objetos aninados y arreglos:
+Los Objetos tienen algo llamado la sintaxis de punto, estas sirven para acceder a los atributos o propiedades de un 
+objeto(Estas pueden ser cualquier tipo de dato), se puede hacer de la siguiente manera:
 
-Los Objetos tienen algo llamado la sintaxis de punto, estas sirven para acceder a los atributo y propiedades de un 
-objeto(Estas pueden ser variable de arrays u objetos anidados), se puede hacer de la siguiente manera:
-console.log(dato. nombre);
---> primero se escribe el console log despues entre parentesis se escribe el nombre del objeto,
-seguido del punto que servira como medio para llamar al atributo o propiedad que queremos.*/
+1. FORMA 1:
+Primero se escribe el console log y entre parentesis se escribe el nombre del objeto seguido del punto que servira como medio 
+para llamar al atributo o propiedad que queremos. Se hace de esta manera:
+console.log(dato.nombre);
+--> De esta manera podemos acceder al objeto llamado dato y acceder a su propiedad llamada nombre. 
+
+2. FORMA 2:
+Tambien existe otra forma que en vez de acceder con el punto podemos acceder mediante corchetes colocando entre comillas
+la propiedad a la que queremos acceder, se hace de esta manera:
+console.log(dato['nombre']);
+--> De esta manera podemos acceder al objeto llamado dato y acceder a su propiedad llamada nombre. */
 
 const objetos = {
     name1: 'josue',
@@ -106,51 +117,85 @@ const objetos = {
     }
   }
   
+/*Para acceder a las propiedades de este objeto utilizamremos la forma del punto o del corchete y como ejemplo accederemos 
+al tercer objeto anidado llamado dato3 y a su propiedad llamada nombre4. */
 
-/*Existe otr forma que en vez de acceder con el punto podemos acceder mediante corchetes colocando entre comillas
-la propiedad a la que queremos acceder, se hace de esta manera:
-console.log(dato['nombre'])
---> De esta manera podemos acceder al objeto llamado dato y a su propiedad llamada nombre.
+//1. FORMA 1:
+console.log(objetos.dato.dato2.dato3.nombre4);
+ 
+//2. FORMA 2:
+console.log(objetos['dato']['dato2']['dato3']['nombre4']);
 
 
-2. Accediendo a funciones:
 
-Para acceder a una funcion ya cambia la manera de llamarla, es diferente porque esta ya no es una propiedad,
-sino un metodo. Por lo cual la manera de invocarla cambia y es de la siguiente manera que se puede llamar:
-objeto.saludar();
---> Primero se escriba el objeto que sera la ubicacion donde se encontrara el metodo,
-seguida del punto que es la ruta para llamarla, y luego el nombre de la funcion, en este caso saludar.
+//! 2.2 Accediendo a funciones:
 
-En conclusion dentro de un objeto a las variables de arrays u objetos anidados se les llama ATRIUTOS O PROPIEDADES.
+/* Para acceder a una funcion ya cambia la forma de llamarla en comparacion a una propiedad, es diferente porque esta 
+ya no es una propiedad, sino un metodo. Para acceder a un metodo debemos haremos lo siguiente: */
+
+
+const obj = {
+    nombre: 'juan',
+    apellido: 'ramirez',
+    edad: 20,
+    saludar: function(){
+        console.log('hola como estas');
+    }
+}
+
+/*Primero se escribe el objeto que sera la ubicacion donde se encontrara el metodo,
+seguida del punto que es la ruta para llamarla, y luego el nombre de la funcion, en este caso saludar.*/
+
+obj.saludar(); //--> De esta forma accedemos al metodo que esta dentro de un objeto.
+
+/*En conclusion dentro de un objeto a las variables de arrays u objetos anidados se les llama ATRIUTOS O PROPIEDADES.
 Y dentro de un objeto a las funciones se les llama METODOS.
 La manera de llamar a un atributo (Objetos aninados, arreglos, variables) es totalmente diferente 
 que al llamar un metodo (Funciones).
 
 */
 
+_______________________________________________________________________________________________________________________
 
-
-//!FORMAS PARA AGREGAR PROPIEDADES A UN OBJETO:
+//! 3. FORMAS PARA AGREGAR PROPIEDADES A UN OBJETO:
 /*Para Agregar propiedades a un obejeto utilizamos la misma forma de acceder a el, pero con la diferencia
-de que al llamar al objeto, pondremos el nombre de la propiedad que queremos agregar y su valor, inicializandolo con =, 
-esto lo haremos de la siguiente manera:
+de que al llamar al objeto, pondremos el nombre de la propiedad que queremos agregar y su valor, inicializandolo con el operador de 
+igual (=), esto lo haremos de la siguiente manera:
 */
 const dato2 ={
     name:'josue',
     edad: 34,
 }
 
-dato2.nacimiento = 'enero'; /*De esta manera agregaremos como propiedad el mes de nacimiento, ahora el objeto quedara asi 
+dato2.nacimiento = 'enero'; /*De esta manera agregaremos como propiedad el mes de nacimiento y el su valor ('enero'), ahora 
+el objeto quedara asi */
 
-const dato2 ={
+const datoo2 ={
     name:'josue',
     edad: 34,
     nacimiento: 'enero'
 }
-*/
+
+_______________________________________________________________________________________________________________________
+
+//! 4. FORMAS PARA REASIGNAR VALORES A UNA PROPIEDAD:
+/*Para reasignar el valor de una propiedad utilizaremos la misma forma de acceder a el, pero con la diferencia
+de que al llamar al objeto, pondremos el nombre de la propiedad que queremos reasignar y su valor, inicializandolo con el operador de
+igual (=), esto lo haremos de la siguiente manera: */
+
+const datoo3 ={
+    name:'josue',
+    edad: 34,
+    nacimiento: 'enero'
+}
+
+datoo3.nacimiento = 'febrero'; /*De esta manera reasignaremos el valor de la propiedad nacimiento y el su valor ('febrero').
 
 
-//! FORMAS PARA ELIMINAR PROPIEDADES DE UN OBJETO:
+_______________________________________________________________________________________________________________________
+
+
+//! 5. FORMAS PARA ELIMINAR PROPIEDADES DE UN OBJETO:
 /*
 Para eliminar propiedades, loque tendremos que hacer es hacer uso de la palabra reservada delete, con esta palabra
 podremos eliminar la propiedad que queramos, primero lo que tendremos que hacer sera escribir delete seguida
@@ -168,12 +213,16 @@ const dato3 = {
 
 delete dato3.nacimiento; //De esta manera podremos eliminar la propiedad nacimiento de nuestro objeto.
 
-//! DESTRUCTURING DE OBJETOS:
+_______________________________________________________________________________________________________________________
+
+//! 6. DESTRUCTURING DE OBJETOS:
 /*
 Este es un tema que veremos mas adelante mas sin embargo el destructuring es una forma para acceder a los nombres 
 de las ropiedades o llaves objetos y signar sus propiedades a una variable.
-Esta es una forma de minimizar la asignacion de variables que antes habia, por ejemplo
-la forma anterior de asignar las propiedades de un objeto sin destructuring era la siguiente:
+Esta es una forma de minimizar la asignacion de variables que antes habia. */ 
+
+
+/*por ejemplo la forma anterior de asignar las propiedades de un objeto sin destructuring era la siguiente:
 */
 
 const producto = {
@@ -210,6 +259,9 @@ Si queremos extraer una llave que no existe pues obviamente no saldra nada,simpl
 reservada para indicar que el valor no existe o no esta definido, hay que tener claro que el
 DESTRUCTURING ademas de extraer el valor, crea la variable.*/
 
+_______________________________________________________________________________________________________________________
+
+//! 
 
 
 //!ALGUNAS PROPIEDADES DE LOS OBJETOS QUE NOS AYUDAN A TRABAJAR CON ELLOS:
@@ -237,7 +289,7 @@ console.log(Object.getOwnPropertyDescriptor(objetoss, 'nombre')); //Me da la lla
 console.log(Object.getOwnPropertyDescriptors(objetoss)); //Me da las llaves de el objeto y la description de los atriutos y metodos.
 console.log(objetoss.hasOwnProperty('nombre')); //Esta propiedad busca y me permite saber si el objeto tiene la propiedad nombre por ejemplo.
 
-//! METODO PARA CONGELAR UN OBJETO Y NO PODERLO MODIFICAR:
+//! USE STRICT:
 /*
 Si recordamos en una variable declarada con CONST una vez que es definida no puede reasignarse su valor, sin embargo los
 objetos si se pueden reasignar sus llaves, eso pasa por que aunque una variable estel este declarada con CONST, al estar en un

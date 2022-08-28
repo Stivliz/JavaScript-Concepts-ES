@@ -178,6 +178,7 @@ console.log(gusto4.Op4())
 
 */
 
+/*
 class Person{
   constructor(name, lastname, edad){
     this.name = name
@@ -194,3 +195,46 @@ const Op2 = new Person('Angie', 'guzman', 20);
 
 console.log(Op1.musica());
 console.log(Op2.musica());
+
+*/
+
+/*  
+class colegio{
+  constructor(name, students, jornada){
+    this.name = name
+    this.students = students
+    this.jornada = jornada
+  }
+  students1(){
+    return `El colegio ${this.name} tiene estudiantes de ${this.students} en la jornada de la ${this.jornada}`
+  }
+}
+
+
+
+const Op1 = new colegio('JER', 'Primaria', 'Mañana');
+const Op2 = new colegio('USCO', 'Secundaria', 'Tarde');
+const Op3 = new colegio('UNA', 'Preparatoria', 'Noche');
+
+
+
+console.log(Op1.students1());
+console.log(Op2.students1());
+console.log(Op3.students1());
+//
+*/
+
+const objetos = {
+  name1: 'josue',
+  apellido: 'guzman',
+  años: 20,
+}
+
+/*
+objetos.name1 = 'juan'
+console.log(objetos.name1);
+
+*/
+
+const {name1:name, apellido: apellido1, años: años1} = objetos;
+console.log(name,apellido1, años1 )
