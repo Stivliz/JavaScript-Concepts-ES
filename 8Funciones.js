@@ -119,6 +119,8 @@ function valores(nombre, edad){ //Estos son los parametros y toman el valor de l
 
 valores('Luis', 21); //Estos son los argumntos (valores).
 
+//u¡Una funcion puede tener dferentes argumentos para el mismo parametro.
+
 ________________________________________________________________________________________________________________________________
 
 //!Asignacion por defecto a los parametros:
@@ -130,9 +132,28 @@ function valores(nombre = 'desconocido', edad = 0){ //Estos son los parametros y
     console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`)
 }
 
-valores('Luis', 21);
-valores();
+/*Ddo el caso que los parametros tengan un valor por defecto pero a su vez nosotros queramos pasarle como valor a los parametros 
+los argumentos, estos (argumentos) tendran mas relevancia que los valores de los parametros por defecto, con lo cual 
+tomara a los valores de los argumentos por encima que los valores por defecto, si no le pasamos argumentos a los parametros,
+los valores que aparece, seran los valores por defecto*/
 
+valores('Luis', 21);
+
+/* Ahora digamos que queremos utilizar el valor por defecto del primer parametro, pero no el valor por defecto del segundo, en vez de eso
+quiero utilizar como valor del segundo parametro un argumento, pero ¿que hago ahi?, ya que al poner solo un valor como argumento lo que esto
+hara sera tomar la posicion del primer parametro como argumento y le pasara ese valor al primer parametro, osea de esta manera:
+*/
+function valores1 (nombre = 'desconocido', edad = 0){ //Estos son los parametros y se le esta asigando un valor. 
+    console.log(`Hola mi nombre es ${nombre} y tengo ${edad} años`)
+}
+
+valores(21); /* De esta manera el valor del argumento sera dirigido al primer parametro y este valor como argumento queremos que vaya 
+al segundo parametro, ya que queremos dejar el valor por defecto del primer parametro, para realizar esta accion lo que haremos sera 
+lo siguiente: */
+
+valores(undefined, 20); /*Lo que haremos sera pasarle directamente undefine, de esta manera la primera posicion al no tener valor y o estar
+definida tendra como valor del parametro, el valor por defecto que este ya contenia, y el segundo parametro adoptara como valor el argumento
+que nosotros le queriamos pasar.*/
 
 ________________________________________________________________________________________________________________________________
 

@@ -224,17 +224,35 @@ console.log(Op3.students1());
 //
 */
 
-const objetos = {
+//'use strict';
+const package = {
   name1: 'josue',
   apellido: 'guzman',
   años: 20,
 }
 
-/*
-objetos.name1 = 'juan'
-console.log(objetos.name1);
 
-*/
+
+package.name1 = 'juan'
+console.log(package.name1);
+
+/*
 
 const {name1:name, apellido: apellido1, años: años1} = objetos;
-console.log(name,apellido1, años1 )
+console.log(name,apellido1, años1 )*/
+
+
+class Colegio {
+  constructor(nombre, song, number){
+    this.nombre =  nombre,
+    this.song = song,
+    this.number = number
+  }
+  free(){
+    return `Mi nombre es ${this.nombre} escucho ${this.song} creada en el año ${this.number}`
+  }
+}
+
+const op1 = new Colegio('Max', 'bird the sea', '2013');
+
+console.log(op1.free());
