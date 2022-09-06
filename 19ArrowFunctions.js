@@ -11,11 +11,25 @@ ________________________________________________________________________________
 
 //!SINTAXIS DE UNA ARROW FUNCTION:
 /*
-La sintaxis de una arrow function es similar a una funcion expresada pero esta simplemente se basa en quitar la palabra
-function y entre el paréntesis y la llave simplemente se inserta la flecha.*/
+La sintaxis de una arrow function es similar a una funcion expresada  como en este caso: */
 
-const saludo = () => {console.log('hola')}; //--> Esta es la forma de escribir una arrow function.
+const saludoo = function(){
+    console.log('hola')
+}
+
+/*Pero en el caso de la Arroy Function simplemente se basa en quitar la palabra function, despues de la asignacion 
+quedaria solo el parentesis, y por asi decirlo colocamos la funcion del lado derecho del parentesis,
+no como palabra reservada(Function), si no con la sintaxis de igual y mayor que (=>), que hace referencia a la funcion.
+
+El parentesis se mantendra, por que ahi es donde le pasaremos los parametros a la funcion, con lo cual el unico cambio 
+se presenta al momento de hubicar la funcion con el simbolo (=>), despues del parentesis.
+*/
+
+const saludo = () => { // El simbolo => hace referencia a FUNCTION.
+    console.log('hola')
+}; //--> Esta es la forma de escribir una arrow function.
 saludo(); //--> Esta es la forma de llamar a la arrow function.
+
 
 
 _______________________________________________________________________________________________________________
@@ -27,6 +41,14 @@ ________________________________________________________________________________
 y dejarla así: */
 
 const saluda = () => console.log('hola');
+
+/* Tambien en este caso las arrow funtion al ver que solo es una linea dan por implicito el return, por lo tanto
+podremos eliminar el console.log del ejemplo anterior, y despues lo podremos llamar, ya que esta uso del return, 
+por lo tanto se debe llamar la funcion para que se imprima el contenido, quedaria asi: */
+
+const saludaa = () => 'hola';
+
+console.log(saludaa()); // -> De esta manera podremos ejecutar (Hola), el uso del return implicito.
 
 _______________________________________________________________________________________________________________
 

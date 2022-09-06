@@ -68,37 +68,7 @@ estoEsUnauncion();
 */
 estoEsUnaFuncion(); // Se puede ejecutar en cualquier momento
 
-________________________________________________________________________________________________________________________________
 
-//! Las funciones pueden devuelver valor.
-/*
-para esto utilizamos una palabra reservada que devuelve el valor (RETUNRN).
-(Una funcion puede devolver cualquier tipo de dato ya sea primitivo o compuesto)
-Cuando el compilador encuntra la palabra reservada retunr,el codigo se ejecuta hasta ahi e ignora lo demas.
-*/
-
-function unafuncionQueDevuelveValor(){
-    console.log("uno");
-    console.log("dos");
-    return "Los valores se retornaran hasta donde se encuentre la palabra reservada retunr";
-}
-
-/*Como en la funcion tenemos dos console.log(); se puede presentar el problema de que al ejecutarse no
-retorne lo que esta en la palara reservada return, para arreglar o persuadir este problema lo que
-podemos hacer sera declarar una variable externamente e inicializarla con el nombre de la funcion y despues la 
-ejecutaremos con un console.log(); esa variable para que nos pueda retornar todo lo que hay en el interiro de esa
-funcion, como ejemplo tenemos lo aplicaremos siguientemente:
-*/
-
-let variable = unafuncionQueDevuelveValor();
-console.log(variable);
-
-/* Ya aclarado anteriormente que cuando el navegaodr encuentra la palabra reservada retunr ignorara todo lo que este
-despues de esta y solo se ejecutara hasta donde este esta palabra reservada, tambien es importante
-decir que podremos retornar valores, podrian ser una cadena de texto, un numero, un objeto
-un arreglo o una misma funcion, auqnue habra veces que nuestras funciones no tendran la necesidad
-de retornar valores, depende del caso.
-*/
 ________________________________________________________________________________________________________________________________
 
 //!Una funcion puede aceptar parametros o valores.
@@ -119,7 +89,68 @@ function valores(nombre, edad){ //Estos son los parametros y toman el valor de l
 
 valores('Luis', 21); //Estos son los argumntos (valores).
 
-//u¡Una funcion puede tener dferentes argumentos para el mismo parametro.
+//¡Una funcion puede tener dferentes argumentos para el mismo parametro.
+
+________________________________________________________________________________________________________________________________
+
+//! Las funciones pueden retornar valores.
+/*
+para esto utilizamos una palabra reservada que devuelve el valor (RETUNRN).
+(Una funcion puede devolver cualquier tipo de dato ya sea primitivo o compuesto)
+Cuando el compilador encuntra la palabra reservada retunr,el codigo se ejecuta hasta ahi e ignora lo demas.
+*/
+
+function unafuncionQueDevuelveValor(){
+    console.log("uno");
+    console.log("dos");
+    return "Los valores se retornaran hasta donde se encuentre la palabra reservada retunr";
+}
+
+/*Como en la funcion tenemos dos console.log(); se puede presentar el problema de que al ejecutarse no
+retorne lo que esta en la palara reservada return, para arreglar o persuadir este problema lo que
+podemos hacer sera declarar una variable externamente e inicializarla con el nombre de la funcion y despues la 
+ejecutaremos con un console.log().
+
+Lo ideal para arreglar o persuadir este problema es que en vez de tener un console.log() tengamos un RETURN, 
+esto lo que hara sera retornarnos los valores que esten alojado en la funcion, como  de igual forma 
+los consoles.log. 
+
+Es muy importante saber que cuando tenemos una funcion que retorna algo, debemos crear y declarar si o si una variable externa
+e inicializara con el nombre de la funcion que tendra dentro de su scope de bloque el valor retornado. 
+
+Por ejemplo en esta funcion retornaremos la informacion que contiene dentro de su estructura, en este caso simplemente 
+retornaremos esos valores creando una variable externa e inicializandola con el nombre de la funcion, que tendra dentro 
+de su scope de bloque el valor que sera retornado. Despues llamaremos y ejecutaremos a esa variable dentro de un console.log().
+*/
+
+const almacenamiento = unafuncionQueDevuelveValor(); // La variable "Almacenamiento", contiene una funcion que retorna un valor.
+console.log(almacenamiento); // Al ejecutar la variable retornara el valor almacenado en la funcion "unafuncionQueDevuelveValor"
+
+
+/*
+Ahora como ejemplo tendremos una funcion con parametros que realizaran y retornaran un calculo realizado dentro de su escope, para esto
+crearemos y declararemos una variable externa inicializandola con el nombre de la funcion y los argumentos que seran los valores captados 
+por los parametros que realizaran el calculo y despues retornar el resultado. Despues deberemos ejecutar la variable con un console.log(), 
+para conocer el resultado de la operacion retornada, realizada dentro del scope de la funcion.
+*/
+
+function calculo (a,b){
+    return a * b
+}
+
+const operacion = calculo (2,3); // La variable "Operacion", contiene la funcion calculo(2,3) que tiene dentro de sus parentesis los valores
+                                 //que seran pasados como argumentos a los parametros.
+
+console.log(operacion); //Al ejecutar la variable operacion, retornara la operacon almacenada en la funcion calculo(). El resultado sera = 6.
+
+
+/* Ya aclarado anteriormente que cuando el navegador encuentra la palabra reservada retunr ignorara todo lo que este
+despues de esta y solo se ejecutara hasta donde este esta palabra reservada, tambien es importante
+decir que podremos retornar valores, podrian ser una cadena de texto, un numero, un objeto
+un arreglo o una misma funcion, auqnue habra veces que nuestras funciones no tendran la necesidad
+de retornar valores, depende del caso.
+*/
+
 
 ________________________________________________________________________________________________________________________________
 
@@ -185,8 +216,43 @@ alert( add( 3, 5 ) ); // ErrorType: add is not defined
 const add = function( x, y ){
   return x + y;
 }
+________________________________________________________________________________________________________________________________
 
+//!COMUNICACION ENTRE LAS FUNCIONES: 
 
+/* Al momento de trabajar en grandes proyectos se manejaran un gran numero de funciones, debido a que en lugar de tener
+una gran funcion con bastas lineas de codigo lo mejor sera que esta se pueda dividir en pequeñas partes
+y alojar en otras funciones para hacer mas optimo el codigo, de esta manera cada funcion realizara una operacion 
+y se podran comunicar unas con otras para generar una accion. Un ejemplo de lo anterior, en donde hay 
+comunicacion entre funciones para realizar una accion sera el siguiente:
+*/
+
+inicioApp()
+
+function inicioApp(){
+    console.log('La Aplicacion esta iniciando...');
+}
+
+function autenticacionApp(){
+    console.log('Se esta autenticando el usuario...')
+    verificacion('Nick', 'Smith')
+}
+
+function verificacion(name, lastname){
+    console.log(`El usuario ${name} ${lastname} ha sido verificado.`)
+}
+/*
+La primera funcion tiene como trabajo iniciar la App, y esta despues de ser iniciada tendra que ser
+autenticada por el usuario, por lo tanto desde la primera funcion invocaremos a la segunda, y cuando
+se autentique el usuario, se podra llamar a la tercera funcion invocandola desde la segunda funcion,
+donde pasaremos como valor de parametros el nombre del usuario ya verificado y de esta manera se creara 
+una relacion o comunicacion entre las funciones. 
+
+De eso trata como se pueden comunicar las funciones, es decir puedes ver que una funcion manda a llamar
+a otra funcion dentro de ella, y siempre hay que tener en cuenta que debe haber una funcion que inicie todo,
+es decir una funcion que arranque todo el sistema.
+
+*/
 
 ________________________________________________________________________________________________________________________________
 

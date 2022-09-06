@@ -6,7 +6,7 @@ const datosPersona = {
     apellido: 'Rodriguez',
     edad: 23,
     casado: false,
-    profesion: function (empleo, salario){     
+    profesion: function (empleo, salario){
         console.log(`El profesional trabaja en ${empleo} y tiene un salario de ${salario}`);
     }
     }
@@ -57,7 +57,7 @@ console.log(x);
 /*
 const y = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-console.log(y.splice(1, 3)); // este metodo lo que hace es que en el primer numero estara el inicio y este sera la posicion 
+console.log(y.splice(1, 3)); // este metodo lo que hace es que en el primer numero estara el inicio y este sera la posicion
 //del primer elemento y el segundo sera el final donde sera el limite de elementos que este tomara.
 //Por ejemplo, en el ejemplo anterior, el primer numero seria 1 y el segundo sera 3, esto significa que tomara los elementos desde la posicion 1,
 //hasta los elementos de la posicion 3. Osea : b,c,d.
@@ -118,14 +118,14 @@ let descuento = (compra >= 60) ? 'Habra descuento' : 'No habra descuento';
         case 'Edge':
           alert( "¡Tienes Edge!" );
           break;
-      
+
         case 'Chrome':
         case 'Firefox':
         case 'Safari':
         case 'Opera':
           alert( 'Esta bien, soportamos estos navegadores también' );
           break;
-      
+
         default:
           alert( '¡Esperamos que esta página se vea bien!' );
       }
@@ -210,7 +210,7 @@ switch(abecedario){
     console.log('i');
     break;
 
-    case 4: 
+    case 4:
     console.log('o');
     break;
 
@@ -254,7 +254,7 @@ const co = {
             console.log('i');
             break;
 
-            case 4: 
+            case 4:
             console.log('o');
             break;
 
@@ -337,14 +337,14 @@ arr.forEach((element, index, array) => {
 
 const arr = [2,4,6,8,10,];
 
-arr.forEach((element, index, array) => { //La estructura de este array utilizando el metodo forEach, 
+arr.forEach((element, index, array) => { //La estructura de este array utilizando el metodo forEach,
                                         //consta de la funcion esta no se pone literalmente sino que se pone en una funcion anonima.
                                         //osea parentesis y entre este parentesis se ponen los parametros que se van a utilizar en la funcion.
                                         //que seran 3 parametros.
                                         //-El primer parametro es el elemento que estamos recorriendo.
                                         //-El segundo parametro es el indice del elemento que estamos recorriendo.
                                         //-El tercer parametro es el array que estamos recorriendo.
-                                        
+
         console.log(element,index, array); //Aqui ejecutaremos la funcion con los parametros de la funcion anonima.
                                                 //E iran ordenamente en la consola asi como estan en la funcion,
                                                 //primero el parametro element, segundo el indice y por ultimo el array.
@@ -372,7 +372,7 @@ try{
 
     console.log("Esto es una prueba de error"); //Aqui se ejecuta el TRY. Si dentro de estos corchetes hay algun error,
                                            //entonces se pasa y se ejecuta el catch como prueba de que hubo error.
-     
+
 }catch(error){  // Aqui se ejecutara el codigo que haya tenido el error en el TRY.
 
     console.log("Error: " + error); // Aqui se ejecuta el CATCH.
@@ -382,7 +382,7 @@ try{
 }
 
 
-try{ 
+try{
     let num1 = 25;
     if(isNaN(num1)){
     throw new error(`No se introdujo numero 1`);
@@ -441,7 +441,7 @@ console.log(nombre, apellido, edad, resto );
 let nombre = 'ana';
 let apellido = 'gabriela';
 
-const dato = {  
+const dato = {
 
     nombre,
     apellido,
@@ -454,7 +454,7 @@ const dato = {
 console.log(dato.nombre, dato.apellido);
 dato.saludar();
 */
- 
+
 /*
 function datos (x,b, ...rest){
     let suma = x + b;
@@ -502,7 +502,7 @@ console.log(rest);
 const array = [1,2,3,4,5];
 
 array.forEach ((element, index, arr) => {
-   console.log (`El numero ${element}, esta en la posicion: ${index}, del array: ${arr}`);    
+   console.log (`El numero ${element}, esta en la posicion: ${index}, del array: ${arr}`);
 
 });
 
@@ -510,7 +510,7 @@ array.forEach ((element, index, arr) => {
 
 const datos = ['Ana Gonzalez', 'joseph castro', 'luis garrido' ]
 
-datos.forEach((element, index, datos) => { 
+datos.forEach((element, index, datos) => {
     console.log(`Su nombre es: ${element}, esta en la posicion: ${index}, dentro de los datos: ${datos}`);
 });
 */
@@ -564,7 +564,7 @@ for(let it in user){
 */
 /*
 const user2 = {
-    
+
     usr:[
         {lista:false},
         {lista:false},
@@ -579,8 +579,132 @@ console.log(user2.usr[lista])
 */
 
 
+// inicioApp()
+
+//  function inicioApp(){
+//     console.log('La Aplicacion esta iniciando...');
+//     autenticacionApp();
+//  }
+
+// function autenticacionApp(a, b){
+//    console.log('Se esta autenticando el usuario...')
+//    verificacion('Nick', 'Smith')
+//    return a * b
+// }
+
+// const x = autenticacionApp(2,5 )
+// console.log(x);
+
+//  function verificacion(name, lastname){
+//      console.log(`El usuario ${name} ${lastname} ha sido verificado.`)
+//  }
 
 
 
 
+//      console.log("uno");
+//      console.log("dos");
+//      return "Los valores se retornaran hasta donde se encuentre la palabra reservada retunr";
+//  }
 
+//  let variable = unafuncionQueDevuelveValor();
+//   console.log(variable);
+
+// let total = 0;
+// function compra(precio){
+//     return total += precio //-->  total = total + precio
+// }
+
+// function descuento(total1){
+//     return total1 / 1.15;
+// }
+
+// let total1 = compra(100)
+//     total1 = compra(400)
+
+// let totalPagar = descuento(total1)
+
+// console.log(totalPagar)
+
+
+
+// const reproducir = {
+//     reproductor:function(id){
+//         console.log(`Reproduciendo cancion con el id --> ${id}`)
+//     },
+//     pausar: function(){
+//         console.log(`Pausando...`)
+//     },
+//     borrar: function(id){
+//         console.log(`Borrando cancion numero --> ${id} `)
+//     },
+//     crearPlayList: function(name){
+//         console.log(`Creando la Play List --> ${name}`)
+//     },
+//     reproPlayList: function(name){
+//         console.log(`Reproduciendo la Play List --> ${name}`)
+//     }
+// }
+
+// reproducir.reproductor(30)
+// reproducir.pausar();
+// reproducir.borrar(20);
+// reproducir.crearPlayList('Rock and Roll');
+// reproducir.reproPlayList('Rock and Roll');
+
+// let total = 0;
+
+// function compra (camisa, pantalon, medias, tenis){
+//     return total = camisa + pantalon + medias + tenis;
+// }
+
+// const totalPrecio = compra(100, 200, 130, 300);
+// console.log(totalPrecio);
+
+
+// function iva(precio){
+//     return precio *1.15;
+// }
+// const totalPagar=iva(totalPrecio)
+// console.log(totalPagar);
+
+// let total = 0;
+
+// function pago(gym){
+//     return total += gym;
+// }
+
+// const pagoMensual = pago(800000);
+// console.log(`La mensaulidad sin iva es de: ${pagoMensual}.`);
+
+// function pagoIva(pagoMensual){
+//     return pagoMensual * 1.05;
+// }
+
+// const mensualidadTotal = pagoIva(pagoMensual)
+// console.log(`La mensualidad total es de: ${mensualidadTotal}.`)
+
+const album = {
+
+    track1: function(song1){
+        console.log(`Se esta reproduciendo la cancion: ${song1}`)
+    },
+    track2: function(song2){
+        console.log(`Segunda en la lista esta la cancion: ${song2}`)
+
+    },
+    track3: function(song3){
+        console.log(`La cancion "${song3}" presenta problemas`)
+    }
+
+}
+
+album.track1('Civil War')
+album.track2('November Rain')
+album.track3('Estranged')
+
+album.borrar = function(Deleted, song3){
+    console.log(`se ha ${Deleted} la cancion: ${song3}`)
+}
+
+album.borrar('eliminado', 'Estranged');
