@@ -24,10 +24,10 @@ Hay dos maneras de crear nuestras funciones:
 existen 3 tipos de funciones que son las mas conocidas: 
 1.Funciones declaradas. 
 2.Funciones expresadas 
-3.Y otra que es mas expresiva y simplificada que se llama Arrow funcion. 
+3.Y hay otra que es mas expresiva y simplificada llama ARROW FUNCTIONS. 
 
-En este caso estaran solo las Funciones Declaradas y las Funciones Epresadas, las arrow Functions 
-estaran mas adelante.
+En este caso estaran solo las Funciones Declaradas y las Funciones Epresadas, de las arrow Functions 
+hablaremos mas adelante.
 
 */
 ________________________________________________________________________________________________________________________________
@@ -254,6 +254,51 @@ es decir una funcion que arranque todo el sistema.
 
 */
 
+//! Funciones que pasan como parametros a otras funciones(Callbacks):
+
+/* Este es un tema que veremos con profuncidad mas adelante, pero que en efecto se puede decir que se pueden
+pasar funciones como argumentos a otras funciones, estas mejor conocidas como CallBacks, un ejemplo de lo anterior a continuacion: */
+
+//Primer ejemplo:
+
+const llamadaPolicial = function(numero){
+    return `llame al numero ${numero}, para llamada a la policia`
+}
+
+const llamadaUrgente = function(primordial){
+    alert(primordial)
+}
+
+const emergencia = function(opcion1, urgente){
+    const telefono = opcion1(123)
+    urgente(telefono);
+}
+
+emergencia(llamadaPolicial, llamadaUrgente)
+
+
+//Segundo ejemplo:
+
+const obtenerSaludo = function(nombre) {
+   return `Hola ${nombre}, bienvenido a Desarrollo Útil.`;
+};
+  
+const imprimirSaludo = function(mensaje) {
+   console.log(mensaje);
+};
+
+const alertSaludo = function(mensaje) {
+   alert(mensaje);
+};
+
+const saludar = function (obtener, imprimir) {
+   const saludo = obtener('Pablo');
+   imprimir(saludo);
+};
+    
+saludar(obtenerSaludo, imprimirSaludo);
+saludar(obtenerSaludo, alertSaludo);
+
 ________________________________________________________________________________________________________________________________
 
 //!FUNCIONES DECLARADAS VS FUNCIONES EXPRESADAS (DIFERENCIAS)
@@ -284,3 +329,4 @@ de compilacion por tener mal acomodado nuestro codigo, es decir nos estamos forz
 primero nuestro codigo antes de ejecutarlo porque al tener todas las funciones expresadas no las podremos utilizar 
 hasta que previamente hayan sido inicializadas.
 */
+

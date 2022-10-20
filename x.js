@@ -11,7 +11,7 @@ console.log(factrial(8))
 let r = []
  for(let i in personaje.propiedades){
     console.log( personaje.propiedades[i].vida);
-    
+
  }
 
 /*
@@ -36,7 +36,7 @@ const objetos = {
       nomre3:'pablo',
       apellido3:'duran',
       arreglo: [1,2,3,[3,4['joseph']]],
-      años: 22, 
+      años: 22,
       dato3: {
         nombre4:'danna',
         apellido4: 'giraldo',
@@ -198,7 +198,7 @@ console.log(Op2.musica());
 
 */
 
-/*  
+/*
 class colegio{
   constructor(name, students, jornada){
     this.name = name
@@ -224,7 +224,9 @@ console.log(Op3.students1());
 //
 */
 
+
 //'use strict';
+/*
 const package = {
   name1: 'josue',
   apellido: 'guzman',
@@ -235,13 +237,13 @@ const package = {
 
 package.name1 = 'juan'
 console.log(package.name1);
-
+*/
 /*
 
 const {name1:name, apellido: apellido1, años: años1} = objetos;
 console.log(name,apellido1, años1 )*/
 
-
+/*
 class Colegio {
   constructor(nombre, song, number){
     this.nombre =  nombre,
@@ -256,3 +258,24 @@ class Colegio {
 const op1 = new Colegio('Max', 'bird the sea', '2013');
 
 console.log(op1.free());
+*/
+
+
+const arreglo = [
+  {nombre: 'jose', apellido:'quintero', edad: 20},
+  {nombre: 'henry', apellido: 'guzman', edad: 23},
+  {nombre: 'rosa', apellido: 'torres', edad: 12}
+]
+let y = [...arreglo]
+console.log(y)
+
+
+let x = []
+
+const nuevo = arreglo.forEach(elemento =>{
+  if(elemento.edad < 22){
+  x.push(elemento.edad)
+  }
+})
+
+console.log(x)

@@ -684,27 +684,104 @@ console.log(user2.usr[lista])
 // const mensualidadTotal = pagoIva(pagoMensual)
 // console.log(`La mensualidad total es de: ${mensualidadTotal}.`)
 
-const album = {
+// const album = {
 
-    track1: function(song1){
-        console.log(`Se esta reproduciendo la cancion: ${song1}`)
-    },
-    track2: function(song2){
-        console.log(`Segunda en la lista esta la cancion: ${song2}`)
+//     track1: function(song1){
+//         console.log(`Se esta reproduciendo la cancion: ${song1}`)
+//     },
+//     track2: function(song2){
+//         console.log(`Segunda en la lista esta la cancion: ${song2}`)
 
-    },
-    track3: function(song3){
-        console.log(`La cancion "${song3}" presenta problemas`)
+//     },
+//     track3: function(song3){
+//         console.log(`La cancion "${song3}" presenta problemas`)
+//     }
+
+// }
+
+// album.track1('Civil War')
+// album.track2('November Rain')
+// album.track3('Estranged')
+
+// album.borrar = function(Deleted, song3){
+//     console.log(`se ha ${Deleted} la cancion: ${song3}`)
+// }
+
+// album.borrar('eliminado', 'Estranged');
+
+// 2 manera de retornar un valor dentro de una funcion.
+// function saludar(nombre){
+//     return `Hola ${nombre}, bienvenido a Desarrollo Útil`
+//  }
+
+// // const resultado = saludar ( " Pablo " ) ;
+// console.log(saludar('jose'))
+
+// function calcular(suma){
+//     return suma;
+// }
+
+// function suma (a,b){
+//     return a + b;
+// }
+
+
+// const operacion = suma(2,3)
+
+// const final = calcular(operacion);
+// console.log(final);
+
+/*A las funciones que son pasadas como argumentos de otras funciones se les conoce como callbacks */
+
+
+    // const obtenerSaludo = function(nombre) {
+    //     return `Hola ${nombre}, bienvenido a Desarrollo Útil.`;
+    // };
+  
+    // const imprimirSaludo = function(mensaje) {
+    //     console.log(mensaje);
+    // };
+
+    // const alertSaludo = function(mensaje) {
+    //     alert(mensaje);
+    // };
+
+    // const saludar = function (obtener, imprimir) {
+    //     const saludo = obtener('Pablo');
+    //     imprimir(saludo);
+    // };
+    
+    // saludar(obtenerSaludo, imprimirSaludo);
+    // saludar(obtenerSaludo, alertSaludo);
+
+
+    // const llamadaPolicial = function(numero){
+    //     return `llame al numero ${numero}, para llamada a la policia`
+    // }
+
+    // const llamadaUrgente = function(primordial){
+    //     alert(primordial)
+    // }
+
+    // const emergencia = function(opcion1, urgente){
+    //     const telefono = opcion1(123)
+    //     urgente(telefono);
+    // }
+
+    // emergencia(llamadaPolicial, llamadaUrgente)
+
+    function map(f, a) {
+        let result = []; // Crea un nuevo arreglo
+        let i; // Declara una variable
+        for (i = 0; i != a.length; i++)
+          result[i] = f(a[i]);
+        return result;
+      }
+
+    const f = function(x) {
+        return x * x * x;
     }
-
-}
-
-album.track1('Civil War')
-album.track2('November Rain')
-album.track3('Estranged')
-
-album.borrar = function(Deleted, song3){
-    console.log(`se ha ${Deleted} la cancion: ${song3}`)
-}
-
-album.borrar('eliminado', 'Estranged');
+    
+    let numbers = [0, 1, 2, 5, 10];
+    let cube = map(f,numbers);
+    console.log(cube);
