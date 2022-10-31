@@ -1,4 +1,4 @@
-//*LOOPS = CICLOS O BUCLES 
+ //*LOOPS = CICLOS O BUCLES 
 /*
 Las estructuras de control (LOOPS) nos van a permitir controlar el flujo de nuestra programación y estos son los llamados
 ciclos o bucles o estructuras repetitivas. Por ejemplo dependiendo de que se evalué una condición, quizás tengamos

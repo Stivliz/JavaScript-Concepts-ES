@@ -495,7 +495,7 @@ const resul = carro.filter(carro => carro.año > 2018 && carro.precio < 30000)
 ________________________________________________________________________________________________________
 
 
-//?METODO REDUCE:
+//!METODO REDUCE:
 /*
 Para entender como funciona el metodo REDUCE, debemos crear un arreglo de numeros y deberemos obtener una variable que contenga
 la suma de todos los numeros alojados en el array, para esto debemos usar el bucle FOR para hacerlo primero de manera
@@ -582,7 +582,7 @@ let op = carros2.reduce((millajeInicial, millajeTotal) => {
 console.log(op)  
 
 /*
-*En este ejemplo queremos que en un array de numeros que contiene arrays con otros numeros dentro de el (anidados) estos se puedan 
+*En este ejemplo queremos que en un array de numeros que contiene arrays de numeros con otros arrays de numeros dentro de el (anidados) estos se puedan 
 *concatener y quedar al final todos en un mismo array:
 */
 const numbers = [1,2,3, [4,5,6], 7, [8]]
@@ -600,20 +600,504 @@ console.log(acumulador)
 
 ________________________________________________________________________________________________________
 
-//?METODO FILL
+//! METODO SORT:
+
+/*
+Algo bastante comun en los arreglos es que si nosotros tenemos propiedades que pueden ser ordenadas, probablemente
+vamos a querer utilizarlas para poder cambiar el orden de los elementos en un array. Por ejemplo, en el siguiente ejemplo
+tenemos un arreglo de datos (nombre, apellido, edad), si nosotros quisieramos ordenarlo por edad, tendriamos que 
+utilizar un bucle for y hacer condicionales etc..., pero lo bueno es que tenemos un metodo que se va a encargar de eso,
+de una formabastante sencilla, el metodo es SORT. Entonces para implementarlo tenemos lo siguiente:
+
+*/
+
+//* Primero implementamos el arreglo de objetos con el que vamos a trabajar
+
+const newDatos = [
+    {nombre: 'juan', apellido: 'dominguez', edad: 21},
+    {nombre: 'rafaela', apellido: 'pulgarin', edad: 23},
+    {nombre: 'daniela', apellido: 'mendoza', edad: 19},
+    {nombre: 'jose', apellido: 'castro', edad : 18},
+    {nombre: 'martin', apellid: 'trujillo', edad: 30}
+]
 
 
+/*
+Ahora para aplicar SORT, debemos crear una funcion que recibe otra funcion(callback), esta funcion lo que hace a diferencia de las
+otras funciones con las que hemos trabajado en metodos pasados, lo que hace es recibir como parametro dos objetos, y es muy importante,
+por que para poder ordenar elementos nosotros debemos pensar en que manera podriamos ordenarlos, para esto primero debemos saber
+cual es el primer elemento  y luego saber cual vendria despues, es decir, debemos comparar dos objetos para poder saber cual es mayor
+y poder cambiarlos de posicion dependiendo de la forma en la cual los queremos ordenar, ya sea de menor a mayor o viceversa.
+
+Entonces basados en esa idea el metodo SORT, recibe dos objetos, el primer objeto de la lista y despues el segundo objeto y asi suesivamente
+con los objetos que le siguen. Entonces su estructura sera de la siguiente forma:
+
+newDatos.sort((first, second) => ), de esta manera iran organizados, ahora para nosotros ordenar el array de objetos de acuerdo a la 
+edad de menor a mayor debemos llamar a los elementos como (first.edad y second.edad), de esta manera nosotros los podriamos utilizar, 
+para realizar la comprobacion, y para realizar la comprobacion podriamos utilizar un condicional
+que nos indicara cual es mayor o menor, para esto podriamos realizarlo de la siguiente forma:
+
+newDatos.sort((first, second) => {
+    if(first.edad > second.edad){ // Quedaria como: Si el primer estudiande de la propiedad (edad), es mayor que el segundo estudiante de la
+                                     propiedad edad, significa que first.edad es mayor que second.edad. Entonces para decirle que es mayor, vamos a retornar 
+        return 1                     un 1. Con esto le digo como si fuera true (verdadero)
+    
+    }else{                           Ahora que pasa si esta condicional no cumple, y en dado caso second.edad es mayor que first.edad, si esto pasa
+        return -1                    le diremos que es menor (first.edad), y para decirle que es menor le diremos que nos retorne un -1.
+    }                                                                               
+                                     Si nosotros lo queremos realizar de manera contraria, pues simplmente cambiamos el signo de mayor que, por el signo de
+                                     menor que, de esta forma, nos mostrara de mayor a menor. Hay que recordar que este proceso, debe ir alojado
+                                     en una nueva constante, para despues mandarla a llamar.
+})                                              
+*/
+
+//*Con esta simple logica, ahora si nosotros vemos el valor que reotrna todo este recorrido pues lo mandamos a llamar. Quedaria como:
+
+const result = newDatos.sort((first, second) => {
+    if(first.edad > second.edad){
+        return 1
+    }else{
+        return -1
+    }
+}) 
+
+console.log(result) //* --> Esto nos mostrara: 
+                                            /*
+                                                [
+                                                    { nombre: 'jose', apellido: 'castro', edad: 18 },
+                                                    { nombre: 'daniela', apellido: 'mendoza', edad: 19},
+                                                    { nombre: 'juan', apellido: 'dominguez', edad: 21},
+                                                    { nombre: 'rafaela', apellido: 'pulgarin', edad: 23},
+                                                    { nombre: 'martin', apellid: 'trujillo', edad: 30}
+                                                ] */
+                        
+//*La estructura anterior tambien la podemos optimizar un poco mas utilizando un operador ternario, nos quedaria:
+
+const result2 = newDatos.sort((first, second) => first.edad > second.edad ? 1 : -1)
+
+//*Ahora no necesariamente lo podemos realizar de esa forma utilizando ya sea una condicional u operador ternario,
+//*a su vez tambien podriamos restar los valores, es algo que puede puede parecer algo extraño, pero se puede entener, 
+//*cuando un valor al restarlo con otro me da un residuo significa que el primer valor era mayor, entonces lo que podemos
+//*hacer basados en esa misma idea es decirle: 
+
+const result3 = newDatos.sort((first, second) => first.edad - second.edad) //* Al final nos dara el mismo resultado.
+
+
+/*
+Ahora algo curioso que pasa con el metodo SORT, que podria ser raro, es que si nosotros queremos ordenar un array 
+de numeros por ejemplo:
+
+const number = [1,3, 5, 10, 100, 1000, 2, 3]
+
+SI nosotros queremos ordenarlo de menor a mayor y utilizamos tan solo el metodo SORT, supongamos que le decimos
+console.log(number.sort()) --> vamos a ver que el lo ordenara de una manera distinta a la esperada, el resultado
+                                nos dara lo siguiente = [1,10,100,1000, 2, 3, 3, 5]
+
+Esto ocurre porque sort no lo ordena de forma numerica, si no por caracteres, entonces si nosotros queremos
+que SORT nos ordene el arreglo de forma numerica de menor a mayor lo que nosotros tenemos que hacer es que utiizar 
+una funcion como las que realizamos anteriormente, de esta manera SORT ordenara de menor a mayor numericamente.
+
+*/
+
+const number = [1,3, 5, 10, 100, 1000, 2, 3]
+
+const newNumber = number.sort((first, second) => first > second ? 1 : -1)
+console.log(newNUmber) //--> De esta manera lo que obtendremos es un arreglo ordenado numericamente de menor a mayor:
+                       //    nos quedaria: [1, 2, 3, 3, 5, 10, 100, 1000]
+
+
+//* Entonces es muy importante conocer esto, por que es algo bastante comun cuando estamos operando con numeros
+//* y queremos ordenarlos ya sea de menor a mayor o viceversa.
+
+
+________________________________________________________________________
+
+//! METODO FIND:
+
+/*
+Ahora vamos a aprender como funciona el metodo FIND, el metodo Find nos permitepoder buscar un elemento dentro de
+un arreglo, y nos devolvera la primera coincidencia que encuente, por ejemplo supongamos que yo quiero todo el objeto 
+en donde el nombre de un estudiante sea igual a (Jorge) por ejemplo, para poder hacer eso, nosotros podemos 
+utilizar el metodo FIND, de una forma bastante sencilla,basicamente podriamos hacer:
+*/
+
+//*Primero creamos el array de objetos, con los diferentes nombres de estudiantes:
+
+const students = [
+    {nombre: 'jesus', apellido: 'torres', edad: 24},
+    {nombre: 'ana', apellido: 'ortega', edad:21},
+    {nombre: 'gabriela', apellido: 'montoya', edad:23},
+    {nombre: 'jorge', apellido: 'lizarazo', edad: 30},
+    {nombre: 'manuel', apellido: 'castro', edad: 15}
+]
+
+/*
+Ahora para utilizar el metodo FIND, podriamos decir, que de el arreglo students, vamos a estar utilizando el metodo FIND,
+y el va a recibir como en los otros mtodos un callback, esta funcion recibira como parametro al estudiante actual, osea el
+estudiante que esta recorriendo y adentro de su bloque de codigo podriamos aplicar una condicion seria:
+
+students.find((student) => {
+                                      Le podriamos decir en la condicion que nos pase a student en su propiedad -->edad, que sea menor
+    if(student.edad < 30){            a 30, y que nos retorne 1, si se cumple, con lo tal al ejecutarse nos devolvera la busqueda con
+                                      el objeto que cumpla con esa condicion, hay que aclarar que nos devolvera la primera coincidencia
+     return 1                         que pueda encontar, por lo cual el objeto que devolvera sera el mas cercano a la ppropiedad edad:30,
+                                      que en este caso es el siguiente objeto con la propiedad --> edad:24. De esta forma al ser esta la 
+    }                                 primera coincidencia mas cercana nos devolvera el objeto en donde se encuentra esa propiedad.edad
+                                      el resultado sera: {nombre: 'jesus', apellido: 'torres', edad: 24}}
+)}
+                                      
+   
+Entonces con esto nosotros basicamente utilizando una simple condicion, podemos obtener como respuesta el objeto que estamos buscando,
+esto funcionaria tambien al momento de querer buscar otra propiedad, ya sea el apellido o la edad.
+*/
+
+//*Hay que aclarar que FIND es diferente a FILTER, ya que el primero hace una busqueda en la cual devolvera solo la primera coincidencia que encuentre
+//*y el segundo sirve para filtrar elementos y devolvera todas las coincidencias que encuentre dependiendo de la condicion que le pasemos. 
+
+const estudiantes = students.find(student => student.edad < 30)
+
+//*Al momento de que FIND busca algo y no lo encuentre, retornara uns UNDEFINED.
+        
+________________________________________________________________________________________________________
+
+//! METODO FINDINDEX:
+/*
+FINDINDEX, es muy parecido al metodo FIND, la diferencia entre los dos es que FINDINDEX, nos regresara solamente el indice
+de la primera coincidencia que este encuentre. Vamos a representarlo con el mismo ejercicio que utilizamos en el
+METODO FIND.
+
+*/
+const clase = [
+    {nombre: 'jesus', apellido: 'torres', edad: 24},
+    {nombre: 'ana', apellido: 'ortega', edad:21},
+    {nombre: 'gabriela', apellido: 'montoya', edad:23},
+    {nombre: 'jorge', apellido: 'lizarazo', edad: 30},
+    {nombre: 'manuel', apellido: 'castro', edad: 15}
+]
+
+/*
+Entonces, su utilizacion es similar a FIND, este metodo recibe un callback, que a su vez recibe un parametro que recorrera el arreglo
+en busca de la propiedad que le indiquemos, para representar su funcionalidad, deberemos llamar al arreglo clase y utilizarlo con el
+metodo find, en donde como nombre de parametro tenemos student, y le pediremos que nos devuelva el indice de la propiedad edad que sea menor a
+30, su exposicion seria:
+*/
+
+const newDat = clase.findIndex(student => student.edad < 30)
+console.log(newDat)// El resultado de esta operacion es 0, ya que la coincidencia es la edad 24, que esta alojada en la posicion 0 del arreglo.
+
+//Podemos ver que objeto retornara de acuerdo al indice ejecutandolo de la siguiente forma:
+
+console.log(clase[newDat])//De esta manera llamamos al arreglo clase y a el elemento de la posicion que ocupa la variable newDat.
+
+//*Dado el caso en que FINDINDEX, no encuentre la posicion que esta buscando, nos retornara un -1, que es similar a un UNDEFINED en el metodo FIND.
+________________________________________________________________________________________________________
+
+//! METODO SOME:
+
+/*
+En esta seccion vamos aprender como funciona l metodo SOME. A continuacion tenemos un arreglo de estudiantes en donde tenemos
+propiedades como name, lastname, age y course:
+*/
+
+const estudiantess = [
+    {name: 'ray', lastname: 'corrinton', age: 21, course: 'programming'},
+    {name: 'max', lastname: 'paine', age: 29, course: 'programming'},
+    {name: 'bryan', lastname: 'occoner', age: 24, course: 'cibersecurity'},
+    {name: 'xander', lastname: 'caige', age: 19, course: 'machine learning'},
+    {name: 'tom', lastname: 'shelby', age: 30, course: 'Data cience'},
+]
+/*
+Supongamos que queremos hacer una comprobacion y tan solo obtener ya sea TRUE o FALSE,
+apartir de que si se cumple la condicion, por ejemplo: Yo no quiero encontrar objetos o retornar
+un nuevo arreglo, simplemente quiero saber si existen estudiantes que sean mayores que x edad, 
+por ejemplo estudiantes que sean mayores a 24 y que me retorne TRUE o FALSE, si ea condicion es dada.
+
+Entonces en lugar de nosotros estar recorriendo elemento por elemento, y comprobando uno a uno 
+nosotros tenemos un metodo dedicado para eso, que nos va ayudar a realizarlo de una forma
+bastante sencilla. 
+
+Entonces lo que haremos sera llamar estudiantes y utilizar el metodo SOME. El metodo some recibe de igual forma
+que los metodos anteriores una funcion como parametro y esta funcion como parametro basicamente recibe cada uno
+de los estudiantes del objeo. Entonces lo que haremos basicamente sera poner una condicion en la cual le diremos
+que si el estudiante en su propiedad age, por ejemplo es mayor a 24, pues que nos retorne true, esto 
+quedaria epuesto de la siguiente forma:
+*/
+
+const totales = estudiantess.some((student) => {
+    if(studen.age > 24){
+        return true
+    }
+})
+
+console.log(totales) /* --> Nosotros al ejecutar el array totales, podrriamos pensar que retornara un arreglo con 
+                            todos los estudiantes que cumplen con la condicion de tener una edad mayor a 24, 
+                            en realidad No. Lo que se ejecutaria en lugar de eso seria es un TRUE. 
+                            
+                            Y esto sucede por que el SOME solo retorna un valor BOOLEANO, apartir de que si hay
+                            determinados objetos que cumplen con la condicion que le estamos pasando, con lo
+                            cual si alguno de los objetos presentes cumplen con la condicion retornara TRUE, 
+                            de lo contrario si ningun objeto cumple con la condicion retornara FALSE. 
+              
+
+Ahora basados en esa idea, tambien podemos pasarle una condicion en la cual nos busque si en las propiedades de los
+objetos hay algun estudiante con el lastname de 'brock', si lo hay, nos retornara TRUE, de lo contrario retornara FALSE.
+
+Ahora, no es necesario que yo ha una condicion de esta forma para poder retornar algo, ya que como en si
+el metodo retornara TRUE o FALSE, no es necesaria un condicional, con lo cual, al realizar el codigo sin un condicional,
+podremos optimizarlo. Nos quedaria asi:
+*/
+
+const totales2 = etudiantess.some(estudiante => estudiante.age > 24 ) 
+console.log(totaltes2) //--> Nos retornara TRUE o FALSE, depediendo si se sumple y existen los valores. 
+
+________________________________________________________________________________________________________
+
+//! METODO EVERY:
+
+/*
+EN esta seccion vamos aprender del metodo EVERY, que basicamente es lo contrario del metodo SOME, es decir 
+que con el metodo SOME, nosotros habiamos visto que si habia algun objeto que si cumplia con la condicion pues 
+retornaba TRUE. El metodo EVERY lo que pide es que todos los objetos cumplan con una condicion y si todos cumplen pues 
+al final va a retornar TRUE, si por ejemplo falta uno, retornara FALSE.
+
+Para poder entenderlo utiliaremos el array anterior
+*/
+
+const estudiantess2 = [
+    {name: 'Ray', lastname: 'Corrinton', age: 21, course: 'programming'},
+    {name: 'Max', lastname: 'Paine', age: 29, course: 'programming'},
+    {name: 'Bryan', lastname: 'Occoner', age: 24, course: 'cibersecurity'},
+    {name: 'Xander', lastname: 'Caige', age: 20, course: 'machine learning'},
+    {name: 'Tom', lastname: 'Shelby', age: 30, course: 'Data cience'},
+]
+
+/*
+Entonces supongamos que llamamos al arreglo estudiantess y utilizaremos el metodo EVERY que recibe un callback, 
+esta funcion recibe un parametro y basados en ese parametro de nombre 'student', nosotros podemos realizar una
+condicion que nos indique si student en su propiedad age es igual a 20, entonces que nos retorne TRUE,
+de lo contrario retorne FALSE. Esto expuesto quedaria:
+*/
+
+const totaless2 = estudiantess2.every(student => student.age === 20)
+console.log(totaless2) /* --> EL nos retornara FALSE, por que de todas las propiedades
+                             age, solo 1 cumple con la condicion, si todos tuvieran un age de 20
+                             retornaria TRUE, por que todos cumplirian con la condicion. 
+                             Basta con que solo 1 no cumpla la condicion para que me retorne FALSE.
+
+Entonces, esto basicamente lo que me permite es comprobar si todos cumplen con una determinada condicion.
+
+Ahora, este metodo nos podria servir para podr comprobar por ejemplo, datos o propiedades apartir
+de un objeto, nosotros le podriamos pedir, no solamente para aplicar el metodo para numeros si no ademas
+podemos pedirle que nos retorne TRUE o FALSE dependiendo si las propiedades incluyen una letra de inicio, por ejemplo
+la J. Cada nombre inicia con una letra, entonces podemos decir si todas las propiedades nombre inician con J.
+
+Para esto podemos utilizar la propiedad de los obejtos .INCLUDES(), que nos verifica si en el objeto existe 
+x cosa. Para representar lo anterior podriamos hacer lo siguiente:
+*/
+
+const totales3 = estudiantess2.every(student => student.name.includes('J')) 
+consolelog(totales3) // --> Si todas las propiedad.nombre, inician con J retornara TRUE de lo contrario retornara FALSE.
 
 
 ________________________________________________________________________________________________________
 
-//?METODO EVERY
+//! METODO INCLUDES:
 
+/*
+Según la MDN el método includes() de JavaScript fue lanzado en la versión ES6 del lenguaje y solo podía ser usado con cadenas de texto, 
+posteriormente el método se extiende para su uso en arreglos para la especificación ES7, en otras palabras:
+
+includes() en ES6: se aplica a strings.
+includes() en ES7: se aplica a arrays.
+
+Pero, ¿para que sirve exactamente este método? 🤔
+En ambos casos y en síntesis, includes realiza una búsqueda en el string o en el array y retorna un valor boleano según sea el caso; 
+true si encuentra el valor y false sino lo encuentra.
+
+Por ejemplo tenemos un arreglo de caracteres de nombres const arrx = ['juan', 'david', 'juana', 'maria']
+si utilizamos includes, para buscar a uno de los nombres por ejemplo 'david' dentro del arrego (arrx), nos devolveria un true, pero si buscamos 
+dentro del mismo arreglo a 'ricardo' nos devolveria false:
+*/
+
+const arrx = ['juan', 'david', 'juana', 'maria']
+const arrxx = arrx.includes('juan')
+console.log(arrxx) //--> El resultado de esta operacion sera TRUE, ya que el elemento existe.
+
+const arrxx2 = arrx.includes('ricardo')
+console.log(arrxx2) //--> EL resultado de esta operacion sera FALSO, ya que el elemento no existe dentro del array.
+
+/*
+Conclusiones:
+-includes() realiza búsquedas en strings y arrays.
+-Las búsquedas por defecto se realizan desde la posición 0 de la cadena o del arreglo.
+-Es posible modificar este comportamiento añadiendo un 2do parámetro opcional entero para realizar la búsqueda.
+-Siempre retorna true o false dependiendo del éxito o no de la búsqueda.
+-No es posible usarlo en objetos
+*/
 _________________________________________________________________________________________________________
 
-//? METODO REPLACE
+//! METODO INDEXOF:
+
+/*
+El metodo INDEXOF tiene como proposito retornarnos el indice en el que se encuentra el valor que nosotros le pasamos,
+dado el caso en que el valor que le pasemos no exista, nos retornara un -1.
+
+Un ejemplo es el siguiente en el cual tenemos un arreglo de palabras const pal = ['hola', 'como', 'como']
+y queremos saber si el valor que le pasamos existe o no, para esto lo realizaremos de la siguiente forma:
+*/
+
+const pal = ['hola', 'como', 'estas']
+
+const pal2 =  pal.indexOf('hola')
+console.log(pal2) //--> En este ejemplo al existir la palabra en el arreglo, nos retorna el 0, ya que es el indice donde esta posicionada 'hola',
+                  // en el arreglo.
+
+const pal3 = pal.indexOf('hi')
+console.log(pal3) //-->En este ejemplo el resultado nos retornara un -1, ya que el valor que le pasamos no se encuentra en el array.
+________________________________________________________________________________________________________
+
+//! METODO JOIN: 
+
+/*
+El metodo JOIN, es un metodo que nos ayuda a unificar todo un array, de esta manera podemos unir con un separador un array de diferentes 
+elementos, ya sea un guion, un punto y coma, una coma en fin. Todos los arrays ya traen una forma predeterminada para separar su elementos
+que es la coma(,), pero con join podemos cambiar a la coma por el signo que queramos.
+
+const elements = ['fire', 'air', 'water'], tenemos a un array de elementos, y predeterminadamente, tiene a la coma como su separador, 
+nosotros ahora queremos cambiar esa forma predetemrinada, por un guion, que sera la manera en la cual los elementos del array elements,
+se separaran. 
+
+La estructura como tal del metodo join es simple, dentro de sus corchetes y comas, ira el signo en el cual nosotros podremos separar al elemento,
+y a su vez tambien podremos darle un espacio, ya sea hacia la izquiera derecha etc. por ejemplo:
+
+
+elements.join('-') --> Nos devolvera: 'fire-air-water'
+elements.join('- ') --> Nos devolvera: 'fire- air- water'
+elements.join(' - ') --> Nos devolvera: 'fire - air - water'
+elements.join(' -') --> Nos devolvera: 'fire -air -water'
+
+Y asi sucesivamente con los signos que utilicemos para separar los elementos de un array, al ejecutarlos al final nos devolvera un STRING.
+*/
+
+const elements = ['fire', 'air', 'water']
+
+console.log(elements.join('-')) //--> El estring que nos devolvera sera: 'fire-air-water'.
+
+
 
 ________________________________________________________________________________________________________
 
-//?METODO FINDINDEX
+//! METODO SPLIT:
+
+/*
+El metodo SPLIT, transforma una cadena STRING en un array, este metodo puede separar una frase ya sea en un array de letras,
+separadas independientemente, o separadas por palabras. EL metodo SPLIT, ademas contiene un parametro extra que nos ayudara
+a limitar hasta donde queremos aplicarle el metodo SPLIT, por ejemplo:
+
+const palabras = 'Hola como estas', tenemos una variable string, que queremos pasarla a array, con el metodo SPLIT lo podemos hacer pero
+hay que tener encuenta, el como lo haremos, por ejemplo:
+
+palabras.split() --> si nosotros no le pasamos nada en parentesis, el emtodo SPLIT nos retornara un arreglo de STRING, 
+                    nos devolvera: ['Hola como estas']
+            
+palabras.split('') --> Si nosotros entre el parentesis le pasamos dos comillas sin espacio en medio, este nos devolvera un array, con
+                        las letras que conforman el STRING que estamos pasando a ARRAY, nos devolvera:
+                        [ 'h', 'o', 'l', 'a', ' ', 'c', 'o', 'm', 'o', ' ', 'e', 's', 't', 'a', 's' ], hay que tener en cuenta que los espacios
+                        que separan las plabras de el STRING, al convertirlas en array, esos espacios tambien se compartaran como otro elemento
+                        mas que conforma el array.
+                        
+palabras.split(' ') --> Si nosotros le damos un espacio a las comillas dentro de los parentesis, SPLIT separara las palabras como elementos 
+                        independientes en el array, nos devolvera: [ 'hola', 'como', 'estas' ]
+
+palabras.split('a') --> SI en dado caso nosotros entre comillas le pasamos una letra o vocal que esta en el STRING, como por ejemelo la vocal
+                        'a', esta misma se cortara, y desaparecera, por ejemplo al colocar la vocal a nos quedaria asi: 
+                        [ 'hol', ' como est', 's' ]
+
+palabras.split(' ', 2) --> Nosotro como anteiormete deciamos, podemos pasarle otro parametro a SPLIT, que sera el limite hasta donde queremos
+                            aplicar SPLIT, por ejemplo, al indicar el 2, estamos diciendo que SPLIT se aplicara hasta el segundo elemento del 
+                            array, despues se rompera, nos devolvera: [ 'hola', 'como'].
+
+*/
+________________________________________________________________________________________________________
+
+//! METODO SLICE:
+
+/*
+El metodo SLICE, es un metodo que nos devolvera una copia, de la parte de un arreglo, por ejemplo en nuestro caso tenemos un array de numeros
+ const numbers = [1,2,3,4,5], SLICE copiara una parte de este arreglo NUMBERS, y lo guardara en otro arreglo, no hara modificaciones
+del arreglo inicial, lo unica+o que hara sera copiar de acuerdo al parametro que nosotros le indiquemos, y el parametro que nosotros le pasamos
+en la sintaxis basica de SLICE, es indicarle el indice de inicio, que si o si le tendremos que indicar por que es obligatorio, y el 
+indice final que en este caso es opcional, puede ir o no dependiendo de nuestra necesidad.
+
+Entonces lo que haremos sera crear un numero arreglo que se encargara de alojar la copia creada de acuerdo al arreglo NUMBERS, 
+const newNumbers =  numbers.slice(), ahora si nosotros queremos copiar desde el indice 2, del arreglo numbers, hasta el indice 4 del mismo,
+                                     lo que haremos sera, indicarle en los parentesis.
+
+const newNumbers = numbers.slice(2, 4) --> Esto lo que nos ejecutara sera: [3, 4]. Como podemos ver nos devuelve el elemento 3 y 4, 
+                                            ahora la pregunta es por que no nos devuelve el 5, ya que le indicamos que nos devolviera 
+                                            dessde el indice 3 hasta el 4. Nos devuelve el 3 por que es el indice inicial  que es la posicion (2),
+                                            pero no nos devuelve el 5 que es la posicion (4) por que SLICE lo que hace es extraer la copia desde 
+                                            el indice inicial hasta el indice final sin incluir el valor de el mismo. Osea copiara desde 
+                                            el indice 2, pero no incluira el valor de el indice 4.
+
+const newNumebers = numbers.slice(2, 5) --> Ahora para incluir el valor del indice 4, pues simplemente le decimos que nos copie desde el 
+                                            indice 2, hasta el indice 5, de esta manera nos dara: [3,4,5].
+                                            
+const newNumbers = numbers.slice(2) --> Debido a que el indice 5 no existe, pues simplemente con solo ponerle el indice 2, que es el indice
+                                        inicial, bastara para copiar los elementos hasta el final del array. 
+                                        Esto de igual forma nos devolvera: [3,4,5]
+
+*/
+________________________________________________________________________________________________________
+
+//! METODO CONCAT:
+/*
+El metodo CONCAT, tiene como funcion cocatenar dos elementos, puede concatenar dos STRINGS pero al concatenar dos arreglos 
+este generara uno nuevo con la concateacion de los dos arreglos que nosotros le pasemos, esta concatenacion no mutara 
+el arreglo inicial, por ejemplo podremos concatener dos arreglos para tener solo uno, y esta concatenacion ira alojada 
+en una nueva variable, por ejemplo:
+
+const palabras = ['primero', 'segundo', 'tercero']
+const palabras2 = ['cuarto', 'quinto']
+const newPalabras = palabras.concat(palabras2) --> Esta concatenacion lo que nos ejecutara sera un arreglo nuevo, con los dos arreglos
+                                                   concatenados, esto nos devolvera: ['primero', 'segundo', 'tercero', 'cuarto', 'quinto']
+
+
+
+//*Con el metodo concat, podemos alojar en un array la concatenacion de dos arrays, numeros etc. 
+*/
+________________________________________________________________________________________________________
+
+//! METODO FLAT:
+
+________________________________________________________________________________________________________
+
+//! METODO FLATMAP:
+
+
+________________________________________________________________________________________________________
+
+//! METODO REPLACE:
+/*
+EL metodo REPLACE, tiene como funcion reemplazar parte de la cadena, por el valor que nosotros le digamos
+pro
+*/
+________________________________________________________________________________________________________
+
+//! METODO FILL:
+
+/*
+Es un Metodo dentro de los arrays, que nos permite llenar un array, con cualquier cosa que nosotros queremos pasarle,
+por ejemplo puede ser un numero. EL metodo FILL, cuenta con tres parametros, el valor con el que queremos llenar el array,
+el indice inicial, y el indice final, hay que aclarar que como igual pasa con el metodo SLICE, el valor del indice final no se incluye.
+
+Entonces tenemos un array de numeros const num = [1,2,3,4,5,6], y queremos llenar con el numero 9 desde el indice 2 hasta el indice 5,
+al utilizar el METODO FILL, nos quedaria asi:
+
+const num = [1,2,3,4,5,6]
+const newNum = num.fill(9, 2, 5) --> EL resultado que nos devolvera sera: [1,2,9,9,9,6].
+*/
+
+
+________________________________________________________________________________________________________
 

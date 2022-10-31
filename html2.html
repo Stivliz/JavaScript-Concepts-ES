@@ -10,25 +10,48 @@
     <p id="demo"></p>
 
     <script>
-      const notasFin = prompt("ingrese notas");
-      function nota(notasFin) {
-        if (notasFin >= 0 && notasFin <= 3) {
-          alert("Muy deficiente");
-        } else if (notasFin >= 3 && notasFin <= 5) {
-          alert("Insuficiente");
-        } else if (notasFin >= 5 && notasFin <= 6) {
-          alert("Suficiente");
-        } else if (notasFin >= 6 && notasFin <= 7) {
-          alert("Bien");
-        } else if (notasFin >= 7 && notasFin <= 9) {
-          alert("Notable");
-        } else if (notasFin >= 9 && notasFin <= 10) {
-          alert("Sobresaliente");
-        } else {
-          alert("Nota inválida");
-        }
+      //Funcion constructora
+      function Animal(nombre, genero){
+        this.nombre = nombre
+        this.genero = genero
       }
-      document.write(nota(notasFin));
+      Animal.prototype.accion = function(){
+        console.log(`me llamo ${this.nombre}, y soy ${this.genero}`)
+      }
+
+      const nuevaInstancia =  new Animal('rocky', 'macho')
+      console.log(nuevaInstancia)
+      nuevaInstancia.accion();
+
+      //Funcion constructora que heredara de Animal sus propiedades.
+      function Perro(nombre, genero, tamanio){
+        this.super = Animal
+        this.super(nombre, genero)
+        this.tamanio = tamanio
+      }
+
+      //En esta linea se realiza la herencia
+      Perro.prototype = new Animal()
+      //En esta linea las caracteristicas de Animales2, ya haran parte del constructor Perro
+      Perro.prototype.constructor = Perro;
+
+      //Sobreescripcion del metodo accion 
+      Perro.prototype.accion = function(){
+        console.log('Sobree escribimos el metodo accion desde la f.constructora perro')
+      }
+
+      //Metodo creado para el prototipo Perro;
+      Perro.prototype.nuevaAccion = function(){
+        console.log(`Soy un perro me llamo ${this.nombre}, soy ${this.genero}, y soy de tamaño ${this.tamanio}`)
+      }
+
+
+      const instance = new Perro('Skype', 'macho', 'mediano')
+      instance.nuevaAccion()
+      instance.accion()
+      console.log(instance)
+
+
     </script>
   </body>
 </html>
