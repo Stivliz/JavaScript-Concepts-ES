@@ -11,6 +11,7 @@
 
     <script>
       //Funcion constructora
+      /*
       function Animal(nombre, genero){
         this.nombre = nombre
         this.genero = genero
@@ -49,8 +50,36 @@
       const instance = new Perro('Skype', 'macho', 'mediano')
       instance.nuevaAccion()
       instance.accion()
-      console.log(instance)
+      console.log(instance)*/
 
+      class Animal{
+        constructor(nombre, genero){
+          this.nombre= nombre
+          this.genero = genero
+        }
+        accion(){
+          console.log('Hola mundo')
+        }
+      }      
+
+      const nIntance = new Animal('rocky', 'macho')
+    
+      console.log(nIntance)
+
+      class Perro extends Animal{
+        constructor(nombre, genero, tamanio){
+          super(nombre, genero)
+          this.tamanio = tamanio
+        }
+
+        accion(){
+          console.log('metodo modificado')
+        }
+      }
+
+      const p1 = new Perro('skype', 'macho', 'mediano')
+      console.log(p1)
+      p1.accion()
 
     </script>
   </body>
