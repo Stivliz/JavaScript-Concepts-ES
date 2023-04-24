@@ -57,7 +57,7 @@ ________________________________________________________________________________
 
 //?METODO PUSH 
 
-//Este Metodo agrega el elemento en la ultima posicion.
+//Este Metodo agrega el elemento en la ultima posicion. Este metodo muta el array original.
 const colores1 = ['rojo', 'verde', 'azul']; 
 
 colores1.push('negro'); //Aca invocamos el nombre del array, un punto que sirve como medio y por ultimo al metodo push,
@@ -71,7 +71,7 @@ ________________________________________________________________________________
 
 //?METODO POP
 
-//Este metodo elimina el elemento de la ultima posicion.
+//Este metodo elimina el elemento de la ultima posicion. Este metodo muta el array original.
 const colores2 = ['rojo', 'verde', 'azul', 'negro'];
 colores2.pop();
 console.log(colores2); /*   Ahora al eliminar el elemento negro de la ultima posicion quedaría, 
@@ -81,7 +81,7 @@ ________________________________________________________________________________
 
 //?METODO UNSHIFT
 
-//Este metodo agrega el elemento de la primera posicion.
+//Este metodo agrega el elemento de la primera posicion. Este metodo muta el array original.
 const colores3 = ['rojo', 'verde', 'azul'];
 colores3.unshift('negro');
 console.log(colores3) /*    Ahora al regar un nuevo elemento a la primera posicion quedaria,
@@ -92,7 +92,7 @@ ________________________________________________________________________________
 
 //?METODO SHIFT
 
-//Este metodo elimina el elemento de la primera posicion.
+//Este metodo elimina el elemento de la primera posicion. Este metodo muta el array original.
 const colores4 = ['negro', 'rojo', 'verde', 'azul'];
 colores4.shift();
 console.log(colores4) /* Ahora al eliminar el primer elemento de la primera posicion quedaria,
@@ -125,10 +125,8 @@ console.log(numeros);
 console.log(numeros.length);
 
 
-
-const ex = ['a','A','t', 'g']    
-ex.splice(0,2, 'angie', 'alejandra');
-console.log(ex);
+/*splice recibe tres parametors, el primero es la posicion en donde iniciaremos en el array, el segundo la cantidad de elementos que 
+eliminaremos desde la posicion donde nos encontramos y el tercero, los elementos que queremos insertar en el array.*/
 
 
 ________________________________________________________________________________________________________
@@ -162,9 +160,9 @@ arr.forEach((element, index, array) => { //La estructura de este array utilizand
 /*
     Ahora hay que tener en cuenta, que el metodo forEach, no retorna nada, solo se utiliza para recorrer arreglos, como tal esa es sola su
     funcion, esta es la diferencia entre forEach y el metodo map, el metodo map aparte de recorrer, puede mutar un arreglo, osea este metodo
-    nos puede ayudar a cambiar los elementos que pueda tener. COn forEach tendriamos que hacer manualmente esta manipulacion. por ejemplo:
+    nos puede ayudar a cambiar los elementos que pueda tener. Con forEach tendriamos que hacer manualmente esta manipulacion. por ejemplo:
 
-    *Tenemos un arreglo con datos (nombre, apellido, edad), que recorreremos y asignaremos los los nombre y apellidos a otro arreglo, 
+    *Tenemos un arreglo con datos (nombre, apellido, edad), que recorreremos y asignaremos los nombre y apellidos a otro arreglo, 
     *para esto lo que haremos sera utilizar el metodo forEach para recorrer el primer array original y manualmente tendremos que asignarle
     *estos datos (nombre, apellido), y para asignar estos datos en un nuevo array, tendremos que crearlo aparte el array y este no contendra 
     *nada, sera un array vacio, que esperara que le agregen a su conenido los elementos que nosotros hagamos manualmente:
@@ -180,18 +178,24 @@ arr.forEach((element, index, array) => { //La estructura de este array utilizand
     arr2.forEach((element) =>{
         newArr2.push(`${element.nombre} ${element.apellido}`) //De esta manera estamos asignando (nombre, apellido) manualmente al otro array,
     })                                                        //utilizando el metodo push,para agregar los datos al nuevo array.
+                                                             
     console.log(newArr2);
     
 ________________________________________________________________________
 
 //?METODO SLICE
 
-const y = ['a', 'b', 'c', 'd', 'e', 'f'];
+//Este metodo nos permitira extraer o cortar una cadena de texto. Para esto debemos poner la posicion en la cual queremos que
+//inicie a cortar y la posicion en la cual queremos que termine de cortar, si no le colocamos una posicion de inicio, nos extraera la posicion
+//de donde quisimos que iniciara a extraer y el resto del contenido, ya que no le pusimos una posicion final para darle a entender donde
+//debia terminar.
 
-console.log(y.splice(1, 3)); // este metodo lo que hace es que en el primer numero estara el inicio y este sera la posicion 
-//del primer elemento y el segundo sera el final donde sera el limite de elementos que este tomara.
-//Por ejemplo, en el ejemplo anterior, el primer numero seria 1 y el segundo sera 3, esto significa que tomara los elementos desde la posicion 1,
-//hasta los elementos de la posicion 3. Osea : b,c,d.
+let eje1 = "hola "
+console.log(eje1.slice(1,3)) //EL primer parametro se ubicara en la posicion que le indicamos, tomaara ese caracter e iniciara desde esa posicion
+                             // hasta una posicion menos de la indicada en el segundo parametro, ya que la posicion indicada en el segundo 
+                             //parametro eliminara el caracter donde numericamente indicamos. Por lo tal tomara los caracteres que numericamente
+                             //indicamos en el primer parametro y un numero menos del indicado en el segundo parametro, nuestro ejemplo quedaria:
+                             // "hola" --> "ol".
 
 
 
@@ -201,9 +205,9 @@ ________________________________________________________________________________
 
 /* 
 EL metodo map es de igual forma como un forEach, nos ayudara a recorrer un arreglo con la diferencia de que este nos ayudara
-a mordificarlo y retornara un arreglo nuevo, este metodo recibe un callback con tres parametros prdeterminados de igual forma 
+a mordificarlo y retornara un arreglo nuevo, este metodo recibe un callback con tres parametros predeterminados de igual forma 
 como el forEach, es decir elemento, índice y array. Y su funcion será devolver un array resultante que sera diferente a los 
-elementos del arreglo inicial, sin modificar al original. Este metodo forEach es inmutable.
+elementos del arreglo inicial, sin modificar al original. Este metodo Map es inmutable.
 */
 
 //En este ejemplo el metodo MAP nos servira para duplicar los elementos de arreglo inicial (numeros1). 
@@ -219,7 +223,7 @@ const duplicado = numeros1.map((numerox) => {
 console.log(duplicado); //El resultado sera [2,4,6,8,10].
 
 /*En el siguiente ejemplo, volveremos a manipular el arreglo inicial y retornaremos uno nuevo, con las propiedades (nombre, apellido) del objeto
-que se alja dentro de el arreglo inicial.
+que se aloja dentro de el arreglo inicial.
 */
 
 const arr3 = [
@@ -533,9 +537,9 @@ la siguiente forma:
 
 const sumArray = [2,3,4,5,6];
 
-let total = sumArray.reduce((acumulador, numero) => {
+let total = sumArray.reduce((acumulador, numeros) => {
 
-    return acumulador + numero;
+    return acumulador + numeros;
 
 }, 0); --> En este lugar estara inicializado en 0 el acumulador. De esta manera el acumulador arrancara en 0, entonces de esta forma
             acumulador que vale 0, se sumara con la primera posicion del array (sumArray), que vale 2, despues ahora el acumulador 
@@ -651,7 +655,7 @@ newDatos.sort((first, second) => {
 })                                              
 */
 
-//*Con esta simple logica, ahora si nosotros vemos el valor que reotrna todo este recorrido pues lo mandamos a llamar. Quedaria como:
+//*Con esta simple logica, ahora si nosotros vemos el valor que retorna todo este recorrido pues lo mandamos a llamar. Quedaria como:
 
 const result = newDatos.sort((first, second) => {
     if(first.edad > second.edad){
@@ -715,7 +719,7 @@ ________________________________________________________________________
 //! METODO FIND:
 
 /*
-Ahora vamos a aprender como funciona el metodo FIND, el metodo Find nos permitepoder buscar un elemento dentro de
+Ahora vamos a aprender como funciona el metodo FIND, el metodo Find nos permite poder buscar un elemento dentro de
 un arreglo, y nos devolvera la primera coincidencia que encuente, por ejemplo supongamos que yo quiero todo el objeto 
 en donde el nombre de un estudiante sea igual a (Jorge) por ejemplo, para poder hacer eso, nosotros podemos 
 utilizar el metodo FIND, de una forma bastante sencilla,basicamente podriamos hacer:
@@ -733,7 +737,7 @@ const students = [
 
 /*
 Ahora para utilizar el metodo FIND, podriamos decir, que de el arreglo students, vamos a estar utilizando el metodo FIND,
-y el va a recibir como en los otros mtodos un callback, esta funcion recibira como parametro al estudiante actual, osea el
+y el va a recibir como en los otros metodos un callback, esta funcion recibira como parametro al estudiante actual, osea el
 estudiante que esta recorriendo y adentro de su bloque de codigo podriamos aplicar una condicion seria:
 
 students.find((student) => {
@@ -756,7 +760,7 @@ esto funcionaria tambien al momento de querer buscar otra propiedad, ya sea el a
 
 const estudiantes = students.find(student => student.edad < 30)
 
-//*Al momento de que FIND busca algo y no lo encuentre, retornara uns UNDEFINED.
+//*Al momento de que FIND busca algo y no lo encuentre, retornara un UNDEFINED.
         
 ________________________________________________________________________________________________________
 
@@ -795,7 +799,7 @@ ________________________________________________________________________________
 //! METODO SOME:
 
 /*
-En esta seccion vamos aprender como funciona l metodo SOME. A continuacion tenemos un arreglo de estudiantes en donde tenemos
+En esta seccion vamos aprender como funciona el metodo SOME. A continuacion tenemos un arreglo de estudiantes en donde tenemos
 propiedades como name, lastname, age y course:
 */
 
@@ -810,7 +814,7 @@ const estudiantess = [
 Supongamos que queremos hacer una comprobacion y tan solo obtener ya sea TRUE o FALSE,
 apartir de que si se cumple la condicion, por ejemplo: Yo no quiero encontrar objetos o retornar
 un nuevo arreglo, simplemente quiero saber si existen estudiantes que sean mayores que x edad, 
-por ejemplo estudiantes que sean mayores a 24 y que me retorne TRUE o FALSE, si ea condicion es dada.
+por ejemplo estudiantes que sean mayores a 24 y que me retorne TRUE o FALSE, si la condicion es dada.
 
 Entonces en lugar de nosotros estar recorriendo elemento por elemento, y comprobando uno a uno 
 nosotros tenemos un metodo dedicado para eso, que nos va ayudar a realizarlo de una forma
@@ -818,13 +822,13 @@ bastante sencilla.
 
 Entonces lo que haremos sera llamar estudiantes y utilizar el metodo SOME. El metodo some recibe de igual forma
 que los metodos anteriores una funcion como parametro y esta funcion como parametro basicamente recibe cada uno
-de los estudiantes del objeo. Entonces lo que haremos basicamente sera poner una condicion en la cual le diremos
+de los estudiantes del objeto. Entonces lo que haremos basicamente sera poner una condicion en la cual le diremos
 que si el estudiante en su propiedad age, por ejemplo es mayor a 24, pues que nos retorne true, esto 
-quedaria epuesto de la siguiente forma:
+quedaria expuesto de la siguiente forma:
 */
 
 const totales = estudiantess.some((student) => {
-    if(studen.age > 24){
+    if(student.age > 24){
         return true
     }
 })
@@ -983,7 +987,7 @@ const elements = ['fire', 'air', 'water']
 
 console.log(elements.join('-')) //--> El estring que nos devolvera sera: 'fire-air-water'.
 
-
+//*Join transforma un array en un string.
 
 ________________________________________________________________________________________________________
 
@@ -1047,6 +1051,7 @@ const newNumbers = numbers.slice(2) --> Debido a que el indice 5 no existe, pues
                                         inicial, bastara para copiar los elementos hasta el final del array. 
                                         Esto de igual forma nos devolvera: [3,4,5]
 
+                                        En pocas palabras Slice nos dara una porcion del array original, pero no modificara el array original.
 */
 ________________________________________________________________________________________________________
 
@@ -1080,8 +1085,14 @@ ________________________________________________________________________________
 //! METODO REPLACE:
 /*
 EL metodo REPLACE, tiene como funcion reemplazar parte de la cadena, por el valor que nosotros le digamos
-pro
+por ejemplo:
 */
+
+let ej = 'hola como estas'
+console.log(ej.replace('estas', 'te ha ido')) //La primera palabra entre commillas es la que cambiaremos y la segunda la nueva que pondremos.
+                                              //Por lo que el ejemplo como tal nos dara al cambiar la palabra:
+                                              // 'hola como te ha ido'
+//*Solo para strings
 ________________________________________________________________________________________________________
 
 //! METODO FILL:
@@ -1091,7 +1102,7 @@ Es un Metodo dentro de los arrays, que nos permite llenar un array, con cualquie
 por ejemplo puede ser un numero. EL metodo FILL, cuenta con tres parametros, el valor con el que queremos llenar el array,
 el indice inicial, y el indice final, hay que aclarar que como igual pasa con el metodo SLICE, el valor del indice final no se incluye.
 
-Entonces tenemos un array de numeros const num = [1,2,3,4,5,6], y queremos llenar con el numero 9 desde el indice 2 hasta el indice 5,
+Entonces tenemos un array de numeros const num = [1,2,3,4,5,6], y queremos llenar con el numero 9 desde el indice 2 hasta el indice   5,
 al utilizar el METODO FILL, nos quedaria asi:
 
 const num = [1,2,3,4,5,6]

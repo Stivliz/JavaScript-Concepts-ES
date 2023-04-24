@@ -21,6 +21,8 @@ console.log(arreglo[4][3][2]);
 
 */
 
+const { Console } = require("console");
+
 
 /*
 
@@ -770,18 +772,102 @@ console.log(user2.usr[lista])
 
     // emergencia(llamadaPolicial, llamadaUrgente)
 
-    function map(f, a) {
-        let result = []; // Crea un nuevo arreglo
-        let i; // Declara una variable
-        for (i = 0; i != a.length; i++)
-          result[i] = f(a[i]);
-        return result;
-      }
-
-    const f = function(x) {
-        return x * x * x;
+  /*
+class Animal {
+    constructor(nombre, genero){
+        this.nombre = nombre
+        this.genero = genero
     }
+}
+
+class Perro extends Animal{
+    constructor(nombre, genero){
+    super(nombre, genero)
+    this.tamanio = null
+    }
+
+    get getAn(){
+        return this.tamanio
+    }
+
+    set setAn(tamanio){
+        this.tamanio = tamanio
+    }
+
+    accion(){
+        return `Me llamo ${thi.nombre}, soy ${this.macho}, soy ${this.tamanio}`
+    }
+}
+
+
+
+const Perro2 = new Perro('jose', 'macho', 'alto')
+Perro2.setAn = 'Alto'
+Perro2.setAn = 'Mediano'
+console.log(Perro2)
+
+(() => {
+    console.log('hola mundo');
+
+    function dos(){
+        console.log('dos')
+    }
+    function uno(){
+        console.log('uno')
+        dos()
+        console.log('tres')
+    }
+    uno();
+    console.log('fin')
+
+})();
+*/
+
+function binadioDecimal(binario){
+    let numDecimal = 0;
+    let longitud = binario.length;
+    for(let i = 0; i < longitud; i++){
+        let reversion = longitud -1 -i;
+        let multiIndice = 2 ** i
+        numDecimal += binario[reversion]* multiIndice
+    }
+
+    return numDecimal
+}
+
+console.log(binadioDecimal('1111'))
+
+
+function decimalBinario(decimal){
+    if(decimal === 0){
+        return '0'
+    }
+    let binario = ''
+    let residuo = 0
     
-    let numbers = [0, 1, 2, 5, 10];
-    let cube = map(f,numbers);
-    console.log(cube);
+    while(decimal > 0){
+        residuo = (decimal % 2)
+        decimal = Math.floor(decimal/2)
+        binario += residuo
+    }
+    return binario;
+}
+
+console.log(decimalBinario(22))
+
+
+
+function debi (num){
+    let numBinario = ''
+    while(num > 0){
+        if(num % 2 === 1){
+            numBinario = '1' + numBinario
+        }else{
+            numBinario = '0' + numBinario
+        }
+        num = Math.floor(num/2)
+    }
+    return numBinario
+
+}
+console.log(debi(22))

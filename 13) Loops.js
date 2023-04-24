@@ -20,12 +20,7 @@ alcanza un determinado valor.
 --> Un iterador: que generalmente incrementa el valor del contador en una cantidad pequeña a cada paso del bucle,
 hasta que alcanza la condición de salida. 
 
-Actualmente While y do While ha caído en desuso ya que estas son estructuras imperativas de programación estructurada
-y pues javascript cada vez se hace mas un lenguaje más declarativo y al ser multiparadigma, sobre todo cuando se
-trabaja con POO o con programación funcional generalmente se usa más un código más declarativo que imperativo, 
-más sin embargo son estructuras importantes de conocer.
-
-
+Algunas estructuras repetititvas son: While, Do...While, for, for-in(Objetos), for-of(Array);
 */
 ______________________________________________________________________________________________________________
 
@@ -74,7 +69,8 @@ Aquí la sintaxis para el bucle do...while:
 
 do { //Dentro de llaves ira, el código que se quiera ejecutar.
 
-   Sentencias(console.log()); // Aquí las sentencias son ejecutadas por lo menos una vez                                    antes de que la condición o expresión booleana sea evaluada y es re-ejecutada cada vez que la condición devuelve true.
+   Sentencias(console.log()); // Aquí las sentencias son ejecutadas por lo menos una vez antes de que la condición o expresión booleana sea 
+                              evaluada y es re-ejecutada cada vez que la condición devuelve true.
     iterador ++; // Aquí ira el iterador que se ejecuta.
 } while (*condición*); // Aquí la condición se evalúa.
 

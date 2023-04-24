@@ -51,7 +51,7 @@
       instance.nuevaAccion()
       instance.accion()
       console.log(instance)*/
-
+      /*
       class Animal{
         constructor(nombre, genero){
           this.nombre= nombre
@@ -70,17 +70,56 @@
         constructor(nombre, genero, tamanio){
           super(nombre, genero)
           this.tamanio = tamanio
+          this.raza = null
         }
 
-        accion(){
-          console.log('metodo modificado')
+        get gerRaza(){
+          return this.raza
+        }
+
+        set serRaza(raza){
+          this.raza = raza
         }
       }
 
       const p1 = new Perro('skype', 'macho', 'mediano')
+      p1.serRaza = 'Gran danes'
       console.log(p1)
-      p1.accion()
+      p1.accion()*/
+      /*
+      class Animal{
+        constructor(nombre, genero){
+          this.nombre = nombre
+          this.genero = genero
+          this.raza = null
+        }
 
+        get getRaza(){
+          return this.raza
+        }
+
+        set setRaza(raza){
+          this.raza = raza
+        }
+      }
+
+      const prueba = new Animal('rocky', 'macho')
+      prueba.setRaza = 'Gran danes'
+      console.log(prueba)
+      */
+      const notificacion = {
+        text: 'ha iniciado el partido',
+        dolor: 'azul',
+        mostrarse(){
+          console.log(this)
+        },
+        cambiarText(text){
+          this.text = text
+        }
+      }
+      notificacion.mostrarse()
+      notificacion.cambiarText('he')
+      console.log(this.tittle)
     </script>
   </body>
 </html>

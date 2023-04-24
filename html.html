@@ -4,40 +4,101 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portafolio</title>
-    <link rel="stylesheet" href="css.css" />
+    <title>Formulario</title>
   </head>
   <body>
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path
-        fill="#00cba9"
-        fill-opacity="1"
-        d="M0,224L20,234.7C40,245,80,267,120,245.3C160,224,200,160,240,117.3C280,75,320,53,360,80C400,107,440,181,480,202.7C520,224,560,192,600,197.3C640,203,680,245,720,250.7C760,256,800,224,840,224C880,224,920,256,960,272C1000,288,1040,288,1080,288C1120,288,1160,288,1200,282.7C1240,277,1280,267,1320,234.7C1360,203,1400,149,1420,122.7L1440,96L1440,0L1420,0C1400,0,1360,0,1320,0C1280,0,1240,0,1200,0C1160,0,1120,0,1080,0C1040,0,1000,0,960,0C920,0,880,0,840,0C800,0,760,0,720,0C680,0,640,0,600,0C560,0,520,0,480,0C440,0,400,0,360,0C320,0,280,0,240,0C200,0,160,0,120,0C80,0,40,0,20,0L0,0Z"
-      ></path>
-    </svg>
+    <h1>Realizacion de formularios:</h1>
+    <!-- Formulario de texto-->
+    <form action="datos.html" method="get">
+      <div>
+        <label for="nameUser">Nombre de usuario</label><br>
+        <input name="nameUser" id="nameUser" type="text" autofocus> <br>
+      </div>
+      <div>
+        <label for="apellido">Apellido</label> <br>
+        <input type="text" id="apellido" name="lastNameUser"> <br>
+      </div>
+      <div>
+        <label for="correo">Email</label><br>
+        <input type="text" id="correo" name="email"> <br>
+      </div>
+      <div>
+        <label for="pass">contraseña</label> <br>
+        <input name="pass" id="pass" type="password"> <br> 
+      </div> 
+      <div>
+        <label for="edad">Edad</label> <br>
+        <input type="number" id="edad" name="age" min="0" max="135" step="5"> <br>
+      </div> 
+      <div>
+        <label for="fecha">Nacimiento</label> <br>
+        <input type="date" id="fecha" name="fecha" min="0"> <br>
+      </div> <br>
+      <div>
+        <input type="submit" value="Enviar">
+        <input type="reset" value="resetear">
+      </div> <br> <br>
 
-    <h1 style="text-align: center"><i>MI PORTAFOLIO 2.0</i></h1>
-    <hr />
-    <div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill="#00cba9"
-          fill-opacity="1"
-          d="M0,160L40,170.7C80,181,160,203,240,229.3C320,256,400,288,480,250.7C560,213,640,107,720,90.7C800,75,880,149,960,170.7C1040,192,1120,160,1200,138.7C1280,117,1360,107,1400,101.3L1440,96L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
-        ></path>
-      </svg>
-    </div>
-    <hr />
+      <!--Rdio de opciones, el name tendra el mismo nombre todos, ya que se comparten.-->
+      <input type="radio" id="rojo" name="color" value="red">
+      <label for="rojo">Rojo</label> <br>
+      <input type="radio" id="verde" name="color" value="green">
+      <label for="verde">Verde</label> <br>
+      <input type="radio" id="azul" name="color" value="blue">
+      <label for="azul">Azul</label> <br> <br>
 
-    <button style="text-align: center">Button</button>
+      <!--Checkbox, par multiples opciones, el name sera independiente ya que son opciones independientes, contrario a los type radio.-->
 
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-      <path
-        fill="#a2d9ff"
-        fill-opacity="1"
-        d="M0,128L240,256L480,64L720,224L960,64L1200,128L1440,32L1440,320L1200,320L960,320L720,320L480,320L240,320L0,320Z"
-      ></path>
-    </svg>
-    <hr />
+      <input type="checkbox" id="rojo" name="rojo" value="red">
+      <label for="rojo">Rojo</label> <br>
+      <input type="checkbox" id="verde" name="verde" value="green">
+      <label for="verde">Verde</label> <br>
+      <input type="checkbox" id="azul" name="azul" value="blue">
+      <label for="azul">Azul</label> <br> <br>
+
+
+      <input type="search" name="search" id="" coldspan="buscador">
+
+      <!--Formulario de opciones-->
+      <label for="opcion">Elije una opcion:</label>
+      <select name="opciones" id="opcion">
+        <option value="">primero</option>
+        <option selected value="">segundo</option>
+        <option value="">tercero</option>
+      </select> <br> <br>
+
+      <!--Formulario de area-->
+
+      <textarea name="" id="" cols="30" rows="10">Escribe aqui</textarea> <br> <br>
+
+      <!--Formulario de boton-->
+      
+      <button type="button" onclick="alert('hola MUNDO')">Click</button>
+      El tipo de atributo submit es para enviar el formulario
+      <button type="submit" onclick="alert('se envio')">Click</button> <br> <br>
+
+      <!--Lista de datos-->
+      <input list="colores">
+        <datalist id="colores">
+          <option>amarillo</option>
+          <option>azul</option>
+          <option>rojo</option>
+        </datalist>
+
+    </form>
+
+    <table>
+      <tr>
+        <th>Lunes</th>
+        <th>Miercoles</th>
+        <th>Jueves</th>
+      </tr>
+      <tr>
+        <td>9-12</td>
+        <td>12-4</td>
+        <td>4-7</td>
+      </tr>
+    </table>
+
   </body>
 </html>

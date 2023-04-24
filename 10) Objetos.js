@@ -231,7 +231,7 @@ const producto = {
     disponible: true
 }
 
-const nombre = porducto.nombre;
+const nombre = producto.nombre;
 const precio = producto.precio;
 const disponible = producto.disponible;
 console.log(nombre);
@@ -261,7 +261,158 @@ DESTRUCTURING ademas de extraer el valor, crea la variable.*/
 
 _______________________________________________________________________________________________________________________
 
-//! 
+//! CUANDO UTILIZAR BRAKETS([]) Y CUANDO UTILIZAR DOT NOTATION(.), EN OBEJTOS:
+
+
+/*
+Ambas notaciones pueden acceder a las propiedades de los objetos. Pero la pregunta suele ser cuál debo usar 🤔. 
+No te preguntes más, solo sigue la guía de estilo de Airbnb. Utilice siempre punto. Y cuando quiera acceder a la propiedad del 
+objeto con una variable, use Bracket 👍
+*/
+
+
+//*DOT NOTATION:
+//Utilizamos el DOT NOTATION, para acceder a una propiedad del ojeto cuando conocemos su valor. Ejemplo:
+
+obj = {
+  edad: 12,
+  universe: 12,
+  año: 2020
+}
+function dotNotation(prop){
+  return prop.edad //--> Por ejemplo aca podemos acceder al valor de la propiedad edad, por que conocemos el nombre de la propiedad edad.
+}
+
+dotNotation(obj) /*--> Aca le pasamos como argumento al paramtro prop, el objeto entonces como conocemos el nombre de sus propiedades, entonces
+podemos acceder a ellas con el dotNotation, ya que conocemos como tal en nombre de las propiedades del objeto.*/
+
+
+____________________________________________
+
+
+//*BRAKETS NOTATION:
+/*
+Utilizaremos BRAKETS NOTATION, al momento de querer acceder a una propiedad de un objeto con una variable y al momento de desconocer 
+el nombre de la propiedad de un objeto.
+Ejemplo:.*/
+
+
+//1. BRAKETS al momento de acceder a la propiedad de un objeto con una variable:
+
+const variable = 'cookie';
+
+const snack = {
+  cookie: '🍪',
+};
+
+// ✅ Dot: access property, podemos ver con la notacion de punto, no se puede acceder a la propiedad del objeto con una variable
+snack.cookie;
+
+// ✅ Bracket: access property with variable, en cambio con la notacion de corchetes si se puede.
+snack[variable];
+
+
+//2. BRAKETS al momento de acceder al nombre de una propiedad que desconocemos de un objeto.
+
+obj2= {
+  edad: 12,
+  universe: 12,
+  año: 2020
+}
+
+let propiedad = 'año' //--> Nosotros aca guardamos en una variable propiedad un strign con el valor de 'año', haciendo referencia al nombre de
+//la propiedad del ojeto año, de esta manera al utilizar porpiedad entre corchetes hacemos referencia a 'año' como propiedad.
+function brakets(obj2, prop){ //-->Aca resibimos 2 parametros, el primer es el el objeto(obj2) y el segundo es un parametro con nombre de prop
+                            //que hace referencia al nombre de un propiedad del objeto (obj2) pero de la cual se desconoce su nombre.
+  return obj2[prop]       //--> Como no sabemos cual es el nombre de esa propiedad que recibimos por parametro entonces vamos hacer uso de la
+                          // notacion de BRAKETS, para invocar su valor, por ende con obj2 que es el nombre del objeto y dentro de los corchetes,
+                          //ponemos el nombre del parametro prop, de esta manera podemos invocar al nombre de la propiedad que es deconocida 
+                          //y se aloja dentro del objeto (obj2) y acceder al valor de la misma.
+}
+
+brakets(obj2, propiedad) //--> EL valor de la propiedad es 'año', por ende es año el valor del parametro que le pasamos ala funcion, por ende al 
+                        // realizar la invocacion dentro del objeto, retornamos como tal (2020).
+
+
+____________________________________________
+
+/*
+//* Limitacion de la DONT NOTATION:
+Con cualquier regla, siempre hay excepciones 😂. Así que echemos un vistazo a algunas de las limitaciones.
+
+1. Problema al trabajar con identificadores 
+2. Problema al trabajar con variables
+
+
+
+1) Trabajar con identificadores
+Uno de los principales límites del uso de las notaciones de puntos es que solo funciona con identificadores válidos. Primero, déjame definir 
+qué es un identificador:
+
+Un identificador es una secuencia de caracteres en el código que identifica una variable, función o propiedad. El identificador tiene 
+las siguientes reglas:
+
+-> distingue mayúsculas y minúsculas
+-> puede contener letras Unicode
+-> $, -, están permitidos
+-> Los dígitos (0-9) están bien PERO pueden no comenzar con un dígito
+Entonces, probemos algunos de estos ejemplos y veamos qué sucede cuando usamos la notación de puntos.
+
+const obj = {
+  123: 'digit',
+  123name: 'start with digit',
+  name123: 'does not start with digit',
+  $name: '$ sign',
+  name-123: 'hyphen',
+  NAME: 'upper case',
+  name: 'lower case'
+};
+
+Nota: Puede notar algunos nombres de propiedades que tuve que incluir entre comillas. Ejemplo: 123name. Tenía que hacer eso, de lo contrario, 
+el objeto se consideraría no válido y generaría un error de sintaxis.
+
+#Notación de puntos
+obj.123;      // ❌ SyntaxError
+obj.123name;  // ❌ SyntaxError
+obj.name123;  // ✅ 'does not start with digit'
+obj.$name;    // ✅  '$ sign'
+
+obj.name-123;  // ❌ SyntaxError
+obj.'name-123';// ❌ SyntaxError
+
+obj.NAME; // ✅ 'upper case'
+obj.name; // ✅ 'lower case'
+
+Vea cómo traté de ser inteligente y usar comillas en el obj.'name-123'ejemplo. Bueno, no lo hagas, porque todavía no funcionará 😂.
+
+
+
+//* Notación de BRAKETS:
+Pero nada de esto es un problema para la notación de corchetes.
+
+obj['123']; // ✅ 'digit'
+obj['123name']; // ✅ 'start with digit'
+obj['name123']; // ✅ 'does not start with digit'
+obj['$name']; // ✅ '$ sign'
+
+obj['name-123']; // ✅ 'does not start with digit'
+
+obj['NAME']; // ✅ 'upper case'
+obj['name']; // ✅ 'lower case'
+
+
+
+//* VEREDICTO:
+
+Teniendo en cuenta la limitacion de la notación de puntos, si se trata de identificadores o variables no válidos, utilice la notación 
+de corchetes. Tambien sii cree que tiene un identificador de JavaScript no válido como su clave de propiedad, use la Notación de corchetes.
+
+ 
+
+
+
+*/
+________________________________________________________________________________________________________________________
 
 
 //!ALGUNAS PROPIEDADES DE LOS OBJETOS QUE NOS AYUDAN A TRABAJAR CON ELLOS:
@@ -305,3 +456,4 @@ Para activar el modo estricto solo ponemos al inicio "use strict"; y de esta man
 
 
 */
+
