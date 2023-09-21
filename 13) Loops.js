@@ -1,9 +1,9 @@
- //*LOOPS = CICLOS O BUCLES 
+//*LOOPS = CICLOS O BUCLES 
 /*
 Las estructuras de control (LOOPS) nos van a permitir controlar el flujo de nuestra programación y estos son los llamados
 ciclos o bucles o estructuras repetitivas. Por ejemplo dependiendo de que se evalué una condición, quizás tengamos
 la necesidad de que ciertas líneas de código se estén ejecutando hasta que se cumpla la condición, aunque aquí tendremos 
-en cuenta el incremento o decremento de alguna variable que hace cambiar ese valor y que va a hacer que se repitan esas 
+en cuenta el incremento o decremento de alguna variable que hace cambiar ese valor y que va hacer que se repitan esas 
 líneas de código hasta que la variable en cuestión que estemos evaluando llegue al valor deseado y siguiente a esto
 entonces se salga de ese ciclo.
 
@@ -39,7 +39,7 @@ while (condición) { //Dentro de llaves ira, el código que se quiera ejecutar.
 */
 
 let contador = 3; //Declaramos una variable contador.
-while (contador <= 13){ //Evaluamos la condicion del while.
+while (contador <= 10){ //Evaluamos la condicion del while.
     console.log(contador); //Ejecutamos el ciclo while.
     contador++; //Incrementamos el contador.
 }
@@ -55,8 +55,6 @@ function bucleWhile(num){ //Recibe un numero como parametro.
     }         
 }
 bucleWhile(12); //Aca se ejecuta la funcion con el argumento 12 que sera el valor del parametro que recibira la funcion.
-
-
 ______________________________________________________________________________________________________________
 
 //* DO WHILE (HACER MIENTRAS):
